@@ -1,0 +1,29 @@
+<p>Total de productos: {{ productos().length }}</p>
+
+<div class="container my-4">
+    <div class="card border-primary mb-3">
+        <div class="card-header">Listado de Productos</div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>nombre</th>
+                        <th>precio</th>
+                        <th>descripción</th>
+                        <th>fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let producto of productos()">
+                        <td>{{ producto.id }}</td>
+                        <td>{{ producto.nombre }}</td>
+                        <td>{{ producto.precio }}</td>
+                        <td>{{ producto.descripcion }}</td>
+                        <td>{{ producto.createAt }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+/* Cuadrícula principal */
+.styles-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 40px 20px;
+    width: 100%;
+}
+
+.styles-product-card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Imagen 3:4 */
+.styles-image-wrapper {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: #f5f5f5;
+    margin-bottom: 12px;
+}
+
+.styles-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Botón wishlist y tags */
+.styles-tag {
+    position: absolute;
+    top: 10px; left: 10px;
+    background: #000; color: #fff;
+    padding: 4px 8px; font-size: 10px; font-weight: 700;
+}
+
+.styles-wishlist-btn {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: none; border: none; width: 24px; cursor: pointer;
+}
+
+/* Info y Colores */
+.styles-product-info { padding: 5px 0; }
+.styles-product-title { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
+.styles-product-price { font-size: 0.9rem; color: #666; }
+
+.styles-color-variants {
+    display: flex; gap: 8px; margin: 10px 0;
+}
+
+.variant-dot {
+    width: 12px; height: 12px; border-radius: 50%; border: 1px solid #ddd;
+}
+
+/* NUEVO BOTÓN INFERIOR */
+.styles-add-button-final {
+    width: 100%;
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.styles-add-button-final:hover {
+    opacity: 0.8;
+}

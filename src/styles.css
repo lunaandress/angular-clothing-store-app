@@ -1,1 +1,77 @@
 /* You can add global styles to this file, and also import other style files */
+/* 1. IMPORTACIÓN DE FUENTE (Inter es la reina del diseño moderno) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+/* 2. RESET TOTAL (Para tener control absoluto) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --off-white: #f5f5f5;
+    --gray-light: #e0e0e0;
+    --gray-dark: #666666;
+    --font-main: 'Inter', sans-serif;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+html, body {
+    height: 100%;
+    background-color: var(--white);
+    color: var(--black);
+    font-family: var(--font-main);
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+/* 3. TIPOGRAFÍA PRO */
+h1, h2, h3, h4 {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+/* 4. BARRA DE SCROLL MINIMALISTA */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--white);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--black);
+}
+
+/* 5. UTILIDADES PARA EL PORTAFOLIO */
+.container-pro {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+button {
+    font-family: var(--font-main);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}

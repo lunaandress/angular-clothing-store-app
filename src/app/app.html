@@ -1,1 +1,36 @@
-<app-productos></app-productos>
+<nav class="styles-navbar-pro">
+  <div class="nav-container">
+    <div class="nav-brand">STYLES®</div>
+    <div class="nav-cart-info">BAG ({{ cartService.totalItems() }})</div>
+  </div>
+</nav>
+
+<section class="hero-section">
+  <div class="video-placeholder">
+    <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=2000" alt="Hero">
+    <div class="hero-content">
+      <h1 class="hero-title">STYLES®</h1>
+      <p class="hero-subtitle">BY ARTISTS FOR ARTISTS</p>
+    </div>
+  </div>
+</section>
+
+<main class="content">
+  <div class="section-header">
+    <h2>NEW ARRIVALS</h2>
+  </div>
+
+  <div class="shop-layout">
+    <section class="products-side">
+      <app-productos></app-productos>
+    </section>
+    
+    <aside class="cart-side">
+      <app-carrito></app-carrito>
+    </aside>
+  </div>
+</main>
+
+<footer class="nude-footer">
+  <h1 class="footer-massive-logo">STYLES®</h1>
+</footer>

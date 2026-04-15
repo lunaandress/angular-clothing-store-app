@@ -1,13 +1,19 @@
-import { Component, signal } from '@angular/core';
-//import { RouterOutlet } from '@angular/router';
-import { ProductosComponet } from './components/productos/productos';
+import { Component, signal, inject } from '@angular/core'; // Añadimos inject
+import { ProductosComponent } from './components/productos/productos';
+import { CarritoComponent } from "./components/carrito/carrito";
+import { CartService } from './services/cart.service'; // Asegúrate de que la ruta sea correcta
 
 @Component({
   selector: 'app-root',
-  imports: [ProductosComponet],
+  standalone: true,
+  imports: [ProductosComponent, CarritoComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('tienda-ropa-app');
+
+  // 1. Inyectamos el servicio
+  // 2. Lo ponemos como 'public' para que el HTML lo vea
+  public cartService = inject(CartService); 
 }

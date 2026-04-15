@@ -1,33 +1,55 @@
-import { CommonModule } from '@angular/common'; // <--- Cambiamos esto
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, signal } from '@angular/core';
 import { Producto } from '../../models/producto';
 import { ProductoService } from '../../services/producto.service';
+import { CartService } from '../../services/cart.service'; // <--- NUEVO IMPORT
+
+interface ProductoVisual extends Producto {
+  imagenUrl?: string;
+}
 
 @Component({
   selector: 'app-productos',
-  standalone: true, // Asegúrate de que tenga esto
-  imports: [CommonModule], // <--- Aquí usamos CommonModule
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './productos.html',
   styleUrl: './productos.css',
 })
-export class ProductosComponet implements OnInit {
-  // Aquí guardaremos los productos que vengan de Java
-  // En lugar de un array normal, usamos un Signal
-    productos = signal<Producto[]>([]);
+export class ProductosComponent implements OnInit {
 
-  // Inyectamos el servicio en el constructor (Correcto)
-  constructor(private service: ProductoService) { }
+  productos = signal<ProductoVisual[]>([]);
 
-ngOnInit(): void {
-    // Llamamos al servicio
+  private fotosCatalogo = [
+    'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1539109132381-31a1ec6ce7a2?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1485230895905-ec17ba36b5bc?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1529139513477-3235a1191e21?q=80&w=800&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=800&auto=format&fit=crop'
+  ];
+
+  constructor(
+    private service: ProductoService,
+    public cartService: CartService // <--- INYECTAMOS EL CARRITO
+  ) { }
+
+  ngOnInit(): void {
     this.service.getProductos().subscribe({
       next: (prods) => {
-        console.log("Asignando datos a la variable...", prods);
-        this.productos.set(prods); // <--- Aquí es donde se guardan
+        const prodsConFotos = prods.map((p, index) => ({
+          ...p,
+          imagenUrl: this.fotosCatalogo[index % this.fotosCatalogo.length]
+        }));
+        this.productos.set(prodsConFotos);
       },
-      error: (err) => {
-        console.error("Error al traer datos de Java", err);
-      }
+      error: (err) => console.error("Error al traer datos de Java", err)
     });
+  }
+
+  // AHORA ESTA FUNCIÓN NO LLAMA A JAVA
+  agregarAlCarrito(producto: any) {
+    this.cartService.agregarProducto(producto);
+    console.log('Producto en memoria:', this.cartService.items());
   }
 }

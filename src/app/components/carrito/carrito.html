@@ -1,0 +1,52 @@
+    <aside class="styles-cart-container">
+    <header class="cart-header">
+        <h3>Shopping Bag</h3>
+        <span class="item-count">{{ cartService.totalItems() }} Items</span>
+    </header>
+
+    <div class="cart-content" *ngIf="cartService.items().length > 0; else vacio">
+        <div class="cart-items-list">
+        <article class="cart-item" *ngFor="let item of cartService.items()">
+            
+            <div class="item-info">
+            <h4 class="item-name">{{ item.nombre }}</h4>
+            <div class="item-details">
+                <span class="qty">QTY: {{ item.cantidad }}</span>
+                <span class="price-unit">{{ item.precio | currency:'EUR' }}</span>
+            </div>
+            </div>
+
+            <div class="item-controls">
+            <span class="item-total-price">{{ (item.precio * item.cantidad) | currency:'EUR' }}</span>
+            <button class="btn-remove" (click)="eliminar(item.idProducto)">
+                Remove
+            </button>
+            </div>
+        </article>
+        </div>
+
+        <footer class="cart-footer">
+        <div class="summary-details">
+            <div class="summary-row">
+            <span>Shipping</span>
+            <span class="free-label">Complimentary</span>
+            </div>
+            <div class="summary-row total">
+            <span>Total</span>
+            <span class="total-amount">{{ calcularTotal() | currency:'EUR' }}</span>
+            </div>
+        </div>
+
+        <button class="btn-checkout" (click)="enviarPedidoFinal()">
+            Checkout Now
+        </button>
+        </footer >
+    </div>
+
+    <ng-template #vacio>
+        <div class="empty-state">
+        <p>Your bag is empty</p>
+        <small>Explore the new collection</small>
+        </div>
+    </ng-template>
+    </aside>

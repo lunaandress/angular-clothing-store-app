@@ -1,0 +1,142 @@
+/* --- CONTENEDOR PRINCIPAL (Minimalismo Radical) --- */
+.cart-card {
+    background: var(--white);
+    padding: 0;
+    border-top: 2px solid var(--black);
+    font-family: var(--font-main);
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.cart-header h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    margin: 0;
+}
+
+.item-count {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--gray-dark);
+    letter-spacing: 0.05em;
+}
+
+/* --- ITEMS DEL CARRITO --- */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--off-white);
+    transition: var(--transition);
+}
+
+.item-name {
+    display: block;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.item-meta {
+    font-size: 0.75rem;
+    color: var(--gray-dark);
+    font-weight: 400;
+}
+
+.item-actions {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.item-price {
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+/* --- BOTÓN ELIMINAR (Sutil y Elegante) --- */
+.btn-remove {
+    background: none;
+    border: none;
+    color: var(--black);
+    font-size: 0.7rem;
+    font-weight: 400;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+}
+
+.btn-remove:hover {
+    opacity: 1;
+}
+
+/* --- RESUMEN FINAL --- */
+.cart-summary {
+    margin-top: 40px;
+    padding: 0;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--gray-dark);
+}
+
+.summary-row.total {
+    border-top: 1px solid var(--black);
+    padding-top: 20px;
+    margin-top: 20px;
+    color: var(--black);
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+}
+
+/* --- BOTÓN CHECKOUT (Impacto Visual) --- */
+.btn-checkout {
+    width: 100%;
+    background: var(--black);
+    color: var(--white);
+    border: 1px solid var(--black);
+    padding: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3em; /* Espaciado muy amplio para lujo */
+    cursor: pointer;
+    margin-top: 30px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.btn-checkout:hover {
+    background: var(--white);
+    color: var(--black);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 0;
+    color: var(--gray-light);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}

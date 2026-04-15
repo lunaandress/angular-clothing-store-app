@@ -1,0 +1,47 @@
+/* Navbar fija arriba */
+.styles-navbar-pro {
+    position: fixed; top: 0; width: 100%;
+    display: flex; justify-content: space-between;
+    padding: 20px 50px; z-index: 1000;
+    background: rgba(255,255,255,0.9);
+    font-weight: 800; font-size: 0.8rem;
+}
+
+/* Hero Section */
+.hero-section { height: 80vh; position: relative; overflow: hidden; }
+.hero-section img { width: 100%; height: 100%; object-fit: cover; }
+.hero-content {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%); text-align: center; color: white;
+}
+.hero-title { font-size: 8vw; margin: 0; line-height: 0.8; }
+
+/* LAYOUT DE TIENDA */
+.content { max-width: 1400px; margin: 0 auto; padding: 50px 20px; }
+
+.section-header { 
+    border-bottom: 2px solid #000; 
+    margin-bottom: 30px; 
+    padding-bottom: 10px; 
+}
+
+.shop-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.products-side { flex: 3; }
+
+.cart-side { 
+    flex: 1; 
+    min-width: 320px; 
+    position: sticky; 
+    top: 100px; /* Se queda pegado al hacer scroll */
+}
+
+/* Footer Masivo */
+.footer-massive-logo {
+    font-size: 20vw; text-align: center;
+    color: #332019; margin-top: 100px; letter-spacing: -0.05em;
+}

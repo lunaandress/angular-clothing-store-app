@@ -1,29 +1,39 @@
-<p>Total de productos: {{ productos().length }}</p>
+<div class="styles-products-grid">
+    
+    <article class="styles-product-card" *ngFor="let producto of productos()">
+        
+        <div class="styles-image-wrapper">
+            <span class="styles-tag" *ngIf="producto.stock < 10">LIMITED</span>
+            
+            <button class="styles-wishlist-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+            </button>
 
-<div class="container my-4">
-    <div class="card border-primary mb-3">
-        <div class="card-header">Listado de Productos</div>
-        <div class="card-body">
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>nombre</th>
-                        <th>precio</th>
-                        <th>descripción</th>
-                        <th>fecha</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let producto of productos()">
-                        <td>{{ producto.id }}</td>
-                        <td>{{ producto.nombre }}</td>
-                        <td>{{ producto.precio }}</td>
-                        <td>{{ producto.descripcion }}</td>
-                        <td>{{ producto.createAt }}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <img 
+                [src]="producto.imagenUrl" 
+                [alt]="producto.nombre" 
+                class="styles-img"
+                loading="lazy">
         </div>
-    </div>
+        
+        <div class="styles-product-info">
+            <div class="styles-info-main">
+                <h3 class="styles-product-title">{{ producto.nombre }}</h3>
+                <p class="styles-product-price">{{ producto.precio | currency:'EUR' }}</p>
+            </div>
+            
+            <div class="styles-color-variants">
+                <span class="variant-dot selected" style="background-color: #D2B48C;"></span>
+                <span class="variant-dot" style="background-color: #ADD8E6;"></span>
+            </div>
+
+            <button class="styles-add-button-final" (click)="agregarAlCarrito(producto)">
+                AÑADIR A LA CESTA
+            </button>
+        </div>
+
+    </article>
+
 </div>

@@ -15,38 +15,6 @@
 
 <section class="hero-section">
   <div class="video-placeholder">
-    <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=2000" alt="Hero">
-    <div class="hero-content">
-      <h1 class="hero-title">STYLES®STUDIO</h1>
-      <p class="hero-subtitle">BY ARTISTS FOR ARTISTS</p>
-    </div>
-  </div>
-</section>
-
-<main class="content">
-  <div class="section-header">
-    <h2>NEW ARRIVALS</h2>
-  </div>
-
-  <div class="shop-layout">
-    <section class="products-side">
-      <app-productos></app-productos>
-    </section>  
-  </div>
-
-  <aside class="cart-sidebar" [class.open]="isCartOpen">
-    <div class="cart-header">
-      <span>CARRITO</span>
-      <button class="close-btn" (click)="toggleCart()">✕</button>
-    </div>
-    <app-carrito></app-carrito>
-  </aside>
-
-@if (isCartOpen) {
-  <div class="cart-overlay" (click)="toggleCart()"></div>
-}
-</main>
-
 <section class="split-video-section">
   
   <div class="video-wrapper">
@@ -71,6 +39,37 @@
   </div>
 
 </section>
+    <div class="hero-content">
+      <h1 class="hero-title">STYLES®STUDIO</h1>
+      <p class="hero-subtitle">BY ARTISTS FOR ARTISTS</p>
+    </div>
+  </div>
+</section>
+
+<main class="content">
+  <div class="section-header">
+    <h2>NEW ARRIVALS</h2>
+  </div>
+
+  <div class="shop-layout">
+    <section class="products-side">
+      <app-productos></app-productos>
+          //<img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=2000" alt="Hero">
+    </section> 
+  </div>
+
+  <aside class="cart-sidebar" [class.open]="isCartOpen">
+    <div class="cart-header">
+      <span>CARRITO</span>
+      <button class="close-btn" (click)="toggleCart()">✕</button>
+    </div>
+    <app-carrito></app-carrito>
+  </aside>
+
+@if (isCartOpen) {
+  <div class="cart-overlay" (click)="toggleCart()"></div>
+}
+</main>
 
 <footer class="nude-footer">
   <h1 class="footer-massive-logo">STYLES®</h1>

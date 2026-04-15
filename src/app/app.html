@@ -1,7 +1,15 @@
 <nav class="styles-navbar-pro">
   <div class="nav-container">
-    <div class="nav-brand">STYLES®</div>
-    <div class="nav-cart-info">BAG ({{ cartService.totalItems() }})</div>
+    <div class="nav-brand">STYLES®STUDIO</div>
+  <div class="nav-cart-info" (click)="toggleCart()" style="cursor: pointer;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="1 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="cart-icon">
+        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <path d="M16 10a4 4 0 0 1-8 0"></path>
+      </svg>
+      
+      <span class="cart-count">({{ cartService.totalItems() }})</span>
+    </div>
   </div>
 </nav>
 
@@ -9,7 +17,7 @@
   <div class="video-placeholder">
     <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=2000" alt="Hero">
     <div class="hero-content">
-      <h1 class="hero-title">STYLES®</h1>
+      <h1 class="hero-title">STYLES®STUDIO</h1>
       <p class="hero-subtitle">BY ARTISTS FOR ARTISTS</p>
     </div>
   </div>
@@ -25,9 +33,19 @@
       <app-productos></app-productos>
     </section>
     
-    <aside class="cart-side">
-      <app-carrito></app-carrito>
-    </aside>
+    <aside class="cart-sidebar" [class.open]="isCartOpen">
+    <div class="cart-header">
+      <span>CARRITO</span>
+      <button class="close-btn" (click)="toggleCart()">✕</button>
+    </div>
+    <app-carrito></app-carrito>
+  </aside>
+
+@if (isCartOpen) {
+  <div class="cart-overlay" (click)="toggleCart()"></div>
+}
+
+    
   </div>
 </main>
 

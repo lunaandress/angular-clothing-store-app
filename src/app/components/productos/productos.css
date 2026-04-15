@@ -1,8 +1,9 @@
 /* Cuadrícula principal */
 .styles-products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 40px 20px;
+    /* Cambiamos auto-fill por 3 columnas fijas para que sean masivas */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px 20px; /* Más espacio vertical (60px) para que respire como marca de lujo */
     width: 100%;
 }
 
@@ -14,7 +15,7 @@
 /* Imagen 3:4 */
 .styles-image-wrapper {
     position: relative;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 3 /3;
     overflow: hidden;
     background: #f5f5f5;
     margin-bottom: 12px;

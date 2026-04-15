@@ -104,9 +104,9 @@
 ========================= */
 
 .content {
-    max-width: 1400px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 50px 20px;
+    padding: 0;
 }
 
 /* Encabezado de sección */
@@ -114,29 +114,24 @@
     border-bottom: 2px solid #000;
     margin-bottom: 30px;
     padding-bottom: 10px;
+    padding: 20px 40px; /* Solo padding para el título */
+    border-bottom: 1px solid #000;
+    margin-bottom: 20px;
 }
 
 /* Layout principal tienda */
 .shop-layout {
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
+    display: block;
+    display: block;
+    width: 100%;
 }
 
 /* Zona productos */
 .products-side {
-    flex: 3;
+    width: 100%;
+    padding: 0 40px; 
+    box-sizing: border-box;
 }
-
-/* Zona carrito (columna lateral) */
-.cart-side {
-    flex: 1;
-    min-width: 320px;
-
-    position: sticky;
-    top: 100px; /* Se queda fijo al hacer scroll */
-}
-
 
 /* =========================
     CARRITO (SIDEBAR + OVERLAY)
@@ -220,4 +215,73 @@
     color: #000;
 
     transform: translateY(20%);
+
+    }
+
+    /*VIDEO FINAL */
+
+    .split-video-section {
+    display: flex;
+    width: 100%;
+    height: 80vh; /* Altura de los videos */
+    overflow: hidden;
+    background-color: #000;
+}
+
+.video-wrapper {
+    position: relative;
+    flex: 1; /* Esto hace que cada uno ocupe exactamente el 50% */
+    height: 100%;
+}
+
+.side-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Para que el video llene el espacio sin deformarse */
+}
+
+/* El texto sobre el video */
+.video-overlay-text {
+    position: absolute;
+    bottom: 60px;
+    left: 40px;
+    color: white;
+    z-index: 10;
+}
+
+.video-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.video-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 2.5vw;
+    margin-bottom: 20px;
+}
+
+/* Botones transparentes (pill buttons) */
+.video-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.video-btn {
+    padding: 10px 25px;
+    border: 1px solid white;
+    border-radius: 50px; /* Forma de píldora */
+    color: white;
+    text-decoration: none;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: background 0.3s, color 0.3s;
+}
+
+.video-btn:hover {
+    background: white;
+    color: black;
 }

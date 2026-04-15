@@ -31,9 +31,10 @@
   <div class="shop-layout">
     <section class="products-side">
       <app-productos></app-productos>
-    </section>
-    
-    <aside class="cart-sidebar" [class.open]="isCartOpen">
+    </section>  
+  </div>
+
+  <aside class="cart-sidebar" [class.open]="isCartOpen">
     <div class="cart-header">
       <span>CARRITO</span>
       <button class="close-btn" (click)="toggleCart()">✕</button>
@@ -44,10 +45,32 @@
 @if (isCartOpen) {
   <div class="cart-overlay" (click)="toggleCart()"></div>
 }
-
-    
-  </div>
 </main>
+
+<section class="split-video-section">
+  
+  <div class="video-wrapper">
+    <video autoplay muted loop playsinline class="side-video">
+      <source src="videos/video-left.mp4" type="video/mp4">
+    </video>
+    
+    <div class="video-overlay-text">
+      <span class="video-label">Live Now</span>
+      <h2 class="video-title">SS26 02 | Leisure Social Club</h2>
+      <div class="video-buttons">
+        <a href="#" class="video-btn">Shop Now</a>
+        <a href="#" class="video-btn">Women's Exclusive</a> 
+      </div>
+    </div>
+  </div>
+
+  <div class="video-wrapper">
+    <video autoplay muted loop playsinline class="side-video">
+      <source src="videos/video-right.mp4" type="video/mp4">
+    </video>
+  </div>
+
+</section>
 
 <footer class="nude-footer">
   <h1 class="footer-massive-logo">STYLES®</h1>

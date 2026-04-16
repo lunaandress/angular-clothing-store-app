@@ -1,0 +1,49 @@
+    <section class="hero-section">
+    <div class="video-placeholder">
+    <section class="split-video-section">
+    
+    <div class="video-wrapper">
+        <video autoplay muted loop playsinline class="side-video">
+        <source src="videos/video-left.mp4" type="video/mp4">
+        </video>
+        
+        <div class="video-overlay-text">
+        <span class="video-label">Live Now</span>
+        <h2 class="video-title">SS26 02 | Leisure Social Club</h2>
+        <div class="video-buttons">
+            <a href="#" class="video-btn">Shop Now</a>
+            <a href="#" class="video-btn">Women's Exclusive</a> 
+        </div>
+        </div>
+    </div>
+
+    <div class="video-wrapper">
+        <video autoplay muted loop playsinline class="side-video">
+        <source src="videos/video-right.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    </section>
+        <div class="hero-content">
+        <h1 class="hero-title">STYLES®STUDIO</h1>
+        <p class="hero-subtitle">BY ARTISTS FOR ARTISTS</p>
+        </div>
+    </div>
+    </section>
+
+    <main class="content">
+    <div class="section-header">
+        <h2>NEW ARRIVALS</h2>
+    </div>
+
+    <div class="shop-layout">
+        <section class="products-side">
+        <app-productos [limit]="4"></app-productos>
+    <div class="view-all-container">
+        <a routerLink="/shop" class="view-all-link">View all products</a>
+    </div>
+        </section>
+    </div>
+
+
+    </main>

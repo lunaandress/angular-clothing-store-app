@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
 import { Producto } from '../../models/producto';
 import { ProductoService } from '../../services/producto.service';
 import { CartService } from '../../services/cart.service'; // <--- NUEVO IMPORT
@@ -17,7 +17,12 @@ interface ProductoVisual extends Producto {
 })
 export class ProductosComponent implements OnInit {
 
+  @Input() limit: number = 0;
+  get listaFiltrada(){
+    return this.limit > 0 ? this.productos().slice(0, this.limit) : this.productos();
+  }
   productos = signal<ProductoVisual[]>([]);
+
 
   private fotosCatalogo = [
     'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop',
@@ -28,6 +33,7 @@ export class ProductosComponent implements OnInit {
     'https://images.unsplash.com/photo-1529139513477-3235a1191e21?q=80&w=800&auto=format&fit=crop',
     'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=800&auto=format&fit=crop'
   ];
+
 
   constructor(
     private service: ProductoService,

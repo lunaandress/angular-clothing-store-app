@@ -1,75 +1,31 @@
 <nav class="styles-navbar-pro">
   <div class="nav-container">
-    <div class="nav-brand">STYLES®STUDIO</div>
-  <div class="nav-cart-info" (click)="toggleCart()" style="cursor: pointer;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="1 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="cart-icon">
+    <div class="nav-brand" routerLink="/" style="cursor: pointer;">STYLES®STUDIO</div>
+    
+    <div class="nav-cart-info" (click)="toggleCart()" style="cursor: pointer;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="1 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="cart-icon">
         <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
         <line x1="3" y1="6" x2="21" y2="6"></line>
         <path d="M16 10a4 4 0 0 1-8 0"></path>
       </svg>
-      
       <span class="cart-count">({{ cartService.totalItems() }})</span>
     </div>
   </div>
 </nav>
 
-<section class="hero-section">
-  <div class="video-placeholder">
-<section class="split-video-section">
-  
-  <div class="video-wrapper">
-    <video autoplay muted loop playsinline class="side-video">
-      <source src="videos/video-left.mp4" type="video/mp4">
-    </video>
-    
-    <div class="video-overlay-text">
-      <span class="video-label">Live Now</span>
-      <h2 class="video-title">SS26 02 | Leisure Social Club</h2>
-      <div class="video-buttons">
-        <a href="#" class="video-btn">Shop Now</a>
-        <a href="#" class="video-btn">Women's Exclusive</a> 
-      </div>
-    </div>
-  </div>
+<router-outlet></router-outlet>
 
-  <div class="video-wrapper">
-    <video autoplay muted loop playsinline class="side-video">
-      <source src="videos/video-right.mp4" type="video/mp4">
-    </video>
-  </div>
-
-</section>
-    <div class="hero-content">
-      <h1 class="hero-title">STYLES®STUDIO</h1>
-      <p class="hero-subtitle">BY ARTISTS FOR ARTISTS</p>
-    </div>
-  </div>
-</section>
-
-<main class="content">
-  <div class="section-header">
-    <h2>NEW ARRIVALS</h2>
-  </div>
-
-  <div class="shop-layout">
-    <section class="products-side">
-      <app-productos></app-productos>
-          //<img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=2000" alt="Hero">
-    </section> 
-  </div>
-
-  <aside class="cart-sidebar" [class.open]="isCartOpen">
+<aside class="cart-sidebar" [class.open]="isCartOpen">
     <div class="cart-header">
       <span>CARRITO</span>
       <button class="close-btn" (click)="toggleCart()">✕</button>
     </div>
     <app-carrito></app-carrito>
-  </aside>
+</aside>
 
 @if (isCartOpen) {
   <div class="cart-overlay" (click)="toggleCart()"></div>
 }
-</main>
 
 <footer class="nude-footer">
   <h1 class="footer-massive-logo">STYLES®</h1>

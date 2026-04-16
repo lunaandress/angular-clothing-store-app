@@ -1,6 +1,6 @@
 <div class="styles-products-grid">
     
-    <article class="styles-product-card" *ngFor="let producto of productos()">
+    <article class="styles-product-card" *ngFor="let producto of listaFiltrada">
         
         <div class="styles-image-wrapper">
             <span class="styles-tag" *ngIf="producto.stock < 10">LIMITED</span>
@@ -11,9 +11,9 @@
                 </svg>
             </button>
 
-            <img 
-                [src]="producto.imagenUrl" 
-                [alt]="producto.nombre" 
+            <img
+                [src]="producto.imagenUrl"
+                [alt]="producto.nombre"
                 class="styles-img"
                 loading="lazy">
         </div>

@@ -2,7 +2,7 @@
 .styles-products-grid {
     display: grid;
     /* Cambiamos auto-fill por 3 columnas fijas para que sean masivas */
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 60px 20px; /* Más espacio vertical (60px) para que respire como marca de lujo */
     width: 100%;
 }

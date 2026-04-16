@@ -2,13 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>TiendaRopaApp</title>
+  <title>STYLES® STUDIO</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* 1. Contenedor del Preloader */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+      opacity: 1;
+      transition: opacity 0.6s ease-in-out, visibility 0.6s;
+    }
+
+    /* Clase para desvanecer el cargador */
+    #preloader.fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    /* 2. El Logo STYLES® giratorio */
+    .loader-logo {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 3.5rem;
+      color: #000;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      /* Animación del eje Y */
+      animation: flip3D 1.8s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95);
+      transform-style: preserve-3d;
+    }
+
+    @keyframes flip3D {
+      0% {
+        transform: rotateY(0deg);
+      }
+      50% {
+        transform: rotateY(180deg);
+      }
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+  </style>
 </head>
 <body>
+  
+  <div id="preloader">
+    <div class="loader-logo">STYLES®</div>
+  </div>
+
   <app-root></app-root>
 </body>
 </html>

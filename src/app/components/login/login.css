@@ -1,0 +1,79 @@
+.login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    text-align: center;
+}
+
+.login-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: -2px;
+    margin-bottom: 10px;
+}
+
+.login-subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 0; /* Estilo cuadrado minimalista */
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 15px;
+    background: #000;
+    color: #fff;
+    border: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    margin-top: 10px;
+}
+
+.login-btn:hover {
+    opacity: 0.8;
+}
+
+.login-footer {
+    margin-top: 25px;
+    font-size: 13px;
+}
+
+.login-footer a {
+    color: #000;
+    font-weight: 700;
+    text-decoration: underline;
+}

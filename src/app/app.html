@@ -2,13 +2,24 @@
   <div class="nav-container">
     <div class="nav-brand" routerLink="/" style="cursor: pointer;">STYLES®STUDIO</div>
     
-    <div class="nav-cart-info" (click)="toggleCart()" style="cursor: pointer;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="1 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="cart-icon">
-        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <path d="M16 10a4 4 0 0 1-8 0"></path>
-      </svg>
-      <span class="cart-count">({{ cartService.totalItems() }})</span>
+    <div class="nav-right-section">
+      
+      <div class="nav-login-icon" routerLink="/login" style="cursor: pointer;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </div>
+
+      <div class="nav-cart-info" (click)="toggleCart()" style="cursor: pointer;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="1 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="cart-icon">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="cart-count">({{ cartService.totalItems() }})</span>
+      </div>
+
     </div>
   </div>
 </nav>

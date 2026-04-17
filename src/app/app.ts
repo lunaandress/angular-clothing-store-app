@@ -1,7 +1,8 @@
 import { AfterViewInit, Component, inject, signal } from '@angular/core';
 import { CarritoComponent } from "./components/carrito/carrito";
-import { RouterOutlet, RouterLink } from '@angular/router';
+import { RouterOutlet, RouterLink, Router } from '@angular/router'; // Añadimos Router
 import { CartService } from './services/cart.service';
+import { AuthService } from './services/auth.service'; // Importamos tu nuevo servicio
 
 @Component({
   selector: 'app-root',
@@ -11,38 +12,50 @@ import { CartService } from './services/cart.service';
   styleUrl: './app.css'
 })
 export class App implements AfterViewInit {
+  // Inyecciones
+  public cartService = inject(CartService);
+  public authService = inject(AuthService); // Inyectamos el AuthService real
+  private router = inject(Router);
+
+  // Estados
+  protected readonly title = signal('tienda-ropa-app');
+  isCartOpen = false;
+  isUserMenuOpen = false; // Variable para el menú de usuario
 
   ngAfterViewInit() {
-    // 1. Lógica de videos
+    // Lógica de videos
     const videos = document.querySelectorAll('video');
     videos.forEach(video => {
       video.muted = true;
       video.play().catch(error => console.log("Autoplay listo", error));
     });
 
-    // 2. Ejecutar la desaparición del preloader
+    // Desaparición del preloader
     this.ocultarPreloader();
   }
 
-  // Nueva función para quitar el logo giratorio
-  private ocultarPreloader() {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-      // Le damos 1.5 segundos para que el usuario vea el logo girar con clase
-      setTimeout(() => {
-        preloader.classList.add('fade-out');
-        
-        // Lo borramos del código después de que termine la transición de 0.6s
-        setTimeout(() => preloader.remove(), 400);
-      }, 1500);
-    }
+  // Lógica del menú de usuario
+  toggleUserMenu() {
+    this.isUserMenuOpen = !this.isUserMenuOpen;
   }
 
-  protected readonly title = signal('tienda-ropa-app');
-  public cartService = inject(CartService);
-  isCartOpen = false;
+  logout() {
+    this.authService.logout(); // Limpia el localStorage y el signal
+    this.isUserMenuOpen = false; // Cierra el menú
+    this.router.navigate(['/login']); // Redirige al login al salir
+  }
 
   toggleCart() {
     this.isCartOpen = !this.isCartOpen;
+  }
+
+  private ocultarPreloader() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+      setTimeout(() => {
+        preloader.classList.add('fade-out');
+        setTimeout(() => preloader.remove(), 400);
+      }, 1500);
+    }
   }
 }

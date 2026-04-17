@@ -4,12 +4,36 @@
     
     <div class="nav-right-section">
       
-      <div class="nav-login-icon" routerLink="/login" style="cursor: pointer;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-          <circle cx="12" cy="7" r="4"></circle>
-        </svg>
-      </div>
+      @if (!authService.user()) {
+        <div class="nav-login-icon" routerLink="/login" style="cursor: pointer;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+      } @else {
+        <div class="user-menu-wrapper">
+          <div class="nav-login-icon active-user" (click)="toggleUserMenu()" style="cursor: pointer;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+
+          @if (isUserMenuOpen) {
+            <div class="user-dropdown">
+              <div class="dropdown-user-info">
+                <span>Hola, {{ authService.user().username }}</span>
+              </div>
+              <a routerLink="/my-orders" (click)="isUserMenuOpen = false">My Orders</a>
+              <a routerLink="/wishlist" (click)="isUserMenuOpen = false">My Wishlist</a>
+              <a routerLink="/returns" (click)="isUserMenuOpen = false">Returns</a>
+              <div class="dropdown-divider"></div>
+              <button class="logout-btn" (click)="logout()">Log Out</button>
+            </div>
+          }
+        </div>
+      }
 
       <div class="nav-cart-info" (click)="toggleCart()" style="cursor: pointer;">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="1 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="cart-icon">

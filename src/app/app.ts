@@ -1,8 +1,9 @@
 import { AfterViewInit, Component, inject, signal } from '@angular/core';
 import { CarritoComponent } from "./components/carrito/carrito";
-import { RouterOutlet, RouterLink, Router } from '@angular/router'; // Añadimos Router
+import { RouterOutlet, RouterLink, Router } from '@angular/router'; 
 import { CartService } from './services/cart.service';
-import { AuthService } from './services/auth.service'; // Importamos tu nuevo servicio
+import { AuthService } from './services/auth.service';
+import { ProductoService } from './services/producto.service';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,13 @@ import { AuthService } from './services/auth.service'; // Importamos tu nuevo se
   styleUrl: './app.css'
 })
 export class App implements AfterViewInit {
+
+  private productoService = inject(ProductoService); // Inyecta el servicio de productos
+  onSearch(termino: string) {
+      // Enviamos el término al servicio para que otros lo escuchen
+      this.productoService.enviarTerminoBusqueda(termino);
+    }
+  
   // Inyecciones
   public cartService = inject(CartService);
   public authService = inject(AuthService); // Inyectamos el AuthService real

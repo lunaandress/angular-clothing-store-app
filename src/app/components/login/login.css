@@ -1,14 +1,13 @@
 /* =========================
-    LOGIN SECTION (Dark Luxury)
+    LOGIN SECTION (White Luxury)
 ========================= */
 .login-container {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Fondo oscuro con el degradado de viñeta que definimos */
-    background-color: var(--bg-dark);
-    background-image: radial-gradient(circle, #1a1a1a 0%, #050505 100%);
+    background-color: #ffffff; /* Fondo blanco puro */
+    background-image: none; /* Eliminamos el degradado oscuro */
 }
 
 .login-box {
@@ -16,116 +15,130 @@
     max-width: 450px;
     padding: 60px;
     text-align: center;
-    /* Un borde muy sutil para enmarcar el formulario */
-    border: 1px solid rgba(201, 185, 154, 0.1);
-    background: rgba(10, 10, 10, 0.8);
-    backdrop-filter: blur(10px);
+    /* En blanco, el borde debe ser casi imperceptible */
+    border: 1px solid #f0f0f0;
+    background: #ffffff;
+    backdrop-filter: none; /* Ya no necesitamos blur sobre blanco */
 }
 
 .login-title {
-    font-family: var(--font-gothic); /* Tipografía gótica Burton */
-    font-size: 3rem;
-    color: var(--old-paper);
+    font-family: var(--font-gothic);
+    font-size: 4rem; /* Más grande para impacto editorial */
+    color: #000000;
     margin-bottom: 5px;
-    letter-spacing: 1px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    line-height: 1;
 }
 
 .login-subtitle {
     font-family: var(--font-luxury);
     font-style: italic;
-    font-size: 1rem;
-    color: var(--old-paper);
-    opacity: 0.6;
-    margin-bottom: 40px;
+    font-size: 1.1rem;
+    color: #888888; /* Gris suave */
+    opacity: 1;
+    margin-bottom: 50px;
 }
 
 /* =========================
-    INPUTS (Estilo Documento Antiguo)
+    INPUTS (Línea de Firma Minimalista)
 ========================= */
 .input-group {
     text-align: left;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 .input-group label {
     display: block;
     font-family: var(--font-detail);
-    font-size: 10px;
-    color: var(--old-paper);
+    font-size: 9px;
+    color: #000000;
     text-transform: uppercase;
-    font-weight: 400;
-    margin-bottom: 10px;
+    font-weight: 600;
+    margin-bottom: 12px;
     letter-spacing: 2px;
 }
 
 .input-group input {
     width: 100%;
-    padding: 15px 0; /* Padding solo arriba y abajo */
+    padding: 12px 0;
     background: transparent;
     border: none;
-    /* Solo borde inferior para que parezca una línea de firma */
-    border-bottom: 1px solid rgba(201, 185, 154, 0.3);
-    color: var(--old-paper);
-    font-family: var(--font-luxury);
-    font-size: 1rem;
-    transition: var(--transition-smooth);
+    /* Línea inferior más fina y limpia */
+    border-bottom: 1px solid #e0e0e0;
+    color: #000000;
+    font-family: var(--font-ui); /* Cambiado a UI para mejor legibilidad al escribir */
+    font-size: 0.9rem;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .input-group input:focus {
     outline: none;
-    border-bottom: 1px solid var(--old-paper);
+    border-bottom: 1px solid #000000; /* Negro puro al enfocar */
+}
+
+.input-group input::placeholder {
+    color: #cccccc;
+    font-weight: 200;
 }
 
 /* =========================
-    BOTÓN Y LINKS (Acción de Lujo)
+    BOTÓN Y LINKS (Contraste Total)
 ========================= */
 .login-btn {
     width: 100%;
-    padding: 18px;
-    background: var(--old-paper);
-    color: var(--bg-dark);
-    border: 1px solid var(--old-paper);
+    padding: 20px;
+    background: #000000; /* Bloque negro sólido */
+    color: #ffffff;
+    border: 1px solid #000000;
     font-family: var(--font-detail);
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 5px;
     cursor: pointer;
-    transition: var(--transition-smooth);
-    margin-top: 20px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-top: 25px;
 }
 
 .login-btn:hover {
     background: transparent;
-    color: var(--old-paper);
+    color: #000000;
 }
 
 .login-footer {
-    margin-top: 35px;
-    font-family: var(--font-luxury);
-    font-size: 0.9rem;
-    color: var(--old-paper);
-    opacity: 0.7;
-}
-
-.login-footer a {
-    color: var(--old-paper);
-    font-weight: 700;
-    text-decoration: none;
-    border-bottom: 1px solid var(--old-paper);
-    padding-bottom: 2px;
-}
-
-/* MENSAJES DE ERROR (Estilo Advertencia Clásica) */
-.error-msg {
-    color: #8b0000; /* Rojo sangre oscuro */
-    font-family: var(--font-detail);
-    font-size: 10px;
-    margin-top: 8px;
+    margin-top: 40px;
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    color: #888888;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-input.ng-invalid.ng-touched {
-    border-bottom-color: #8b0000 !important;
+.login-footer a {
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 2px;
+    margin-left: 5px;
+    transition: opacity 0.3s ease;
 }
 
+.login-footer a:hover {
+    opacity: 0.5;
+}
+
+/* MENSAJES DE ERROR (Agresivo pero limpio) */
+.error-msg {
+    color: var(--accent-crimson);
+    font-family: var(--font-detail);
+    font-size: 9px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+input.ng-invalid.ng-touched {
+    border-bottom-color: var(--accent-crimson) !important;
+}

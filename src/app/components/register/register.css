@@ -1,0 +1,129 @@
+/* =========================
+    REGISTER SECTION (White Editorial)
+========================= */
+.login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff; /* Blanco puro */
+}
+
+.login-box {
+    width: 100%;
+    max-width: 480px; /* Un poco más ancho para acomodar el formulario de registro */
+    padding: 60px;
+    text-align: center;
+    border: 1px solid #f2f2f2; /* Línea de contorno casi invisible */
+    background: #ffffff;
+}
+
+.login-title {
+    font-family: var(--font-gothic); /* Pirata One */
+    font-size: 4.5rem;
+    color: #000000;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 0.9;
+}
+
+.login-subtitle {
+    font-family: var(--font-ui); /* Inter */
+    font-size: 10px;
+    font-weight: 400;
+    color: #888888;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 50px;
+}
+
+/* =========================
+    FORMULARIO (Líneas de Firma)
+========================= */
+.input-group {
+    text-align: left;
+    margin-bottom: 35px;
+}
+
+.input-group label {
+    display: block;
+    font-family: var(--font-ui);
+    font-size: 9px;
+    color: #000000;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #e5e5e5; /* Gris muy tenue */
+    color: #000000;
+    font-family: var(--font-ui);
+    font-size: 14px;
+    outline: none;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.input-group input:focus {
+    border-bottom: 1px solid #000000; /* Negro puro al activar */
+}
+
+.input-group input::placeholder {
+    color: #cccccc;
+    font-size: 12px;
+    font-weight: 200;
+    letter-spacing: 1px;
+}
+
+/* =========================
+    BOTÓN DE ACCIÓN (High-Contrast)
+========================= */
+.login-btn {
+    width: 100%;
+    padding: 22px;
+    background: #000000; /* Negro sólido */
+    color: #ffffff;
+    border: 1px solid #000000;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: var(--luxury-transition);
+}
+
+.login-btn:hover {
+    background: transparent;
+    color: #000000;
+}
+
+/* =========================
+    FOOTER Y ENLACES
+========================= */
+.login-footer {
+    margin-top: 40px;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    color: #888888;
+}
+
+.login-footer a {
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 2px;
+    margin-left: 5px;
+    transition: opacity 0.3s ease;
+}
+
+.login-footer a:hover {
+    opacity: 0.5;
+}

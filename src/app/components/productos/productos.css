@@ -1,126 +1,168 @@
-/* Cuadrícula principal */
+/* =========================
+    CUADRÍCULA PRINCIPAL (Look Revista)
+========================= */
 .styles-products-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 80px 30px; /* Aumentamos el aire para que cada prenda parezca una pieza de museo */
+    /* Ajuste para que sea más responsivo sin perder las 4 columnas en desktop */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 100px 40px; /* Más aire vertical para separar colecciones */
     width: 100%;
-    padding: 40px 0;
+    padding: 60px 0;
+    max-width: 1600px;
+    margin: 0 auto;
 }
 
 .styles-product-card {
     display: flex;
     flex-direction: column;
-    transition: var(--transition-smooth);
+    transition: var(--luxury-transition);
 }
 
-/* Imagen con efecto de "Retrato Antiguo" */
+/* =========================
+    IMAGEN (Enmarcado de Galería)
+========================= */
 .styles-image-wrapper {
     position: relative;
-    aspect-ratio: 3 / 4; /* Cambiado a 3:4, es más editorial y estilizado que el cuadrado */
+    aspect-ratio: 3 / 4;
     overflow: hidden;
-    background: #000;
-    margin-bottom: 20px;
-    border: 1px solid rgba(201, 185, 154, 0.1); /* Un marco casi invisible */
+    background: #fdfdfd; /* Fondo casi blanco para la carga */
+    margin-bottom: 25px;
+    border: 1px solid #f0f0f0; /* Línea de contorno ultra sutil */
 }
 
 .styles-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(20%) sepia(10%); /* Efecto sutil de fotografía de época */
-    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+    /* Efecto editorial: menos saturación, más nitidez */
+    filter: grayscale(15%) contrast(1.05);
+    transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1), filter 1s ease;
 }
 
 .styles-product-card:hover .styles-img {
-    transform: scale(1.05); /* Zoom suave de lujo */
-    filter: grayscale(0%) sepia(0%); /* Cobra vida al pasar el ratón */
+    transform: scale(1.08);
+    filter: grayscale(0%) contrast(1);
 }
 
-/* Etiquetas y Wishlist */
+/* =========================
+    ETIQUETAS Y WISHLIST
+========================= */
 .styles-tag {
     position: absolute;
-    top: 15px; left: 15px;
-    background: var(--accent-crimson); /* Rojo sangre para las ofertas */
-    color: var(--old-paper);
-    padding: 5px 12px; 
-    font-family: var(--font-detail);
-    font-size: 9px; 
-    letter-spacing: 2px;
+    top: 0; left: 0; /* Pegado a la esquina para look moderno */
+    background: var(--accent-crimson);
+    color: #ffffff;
+    padding: 8px 15px;
+    font-family: var(--font-ui);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
+    z-index: 2;
+}
+
+.styles-tag.out-of-stock {
+    background: #000000; /* Agotado en negro para contraste */
 }
 
 .styles-wishlist-btn {
     position: absolute;
     top: 15px; right: 15px;
-    background: none; border: none; 
-    width: 20px; cursor: pointer;
-    filter: invert(1); /* Para que resalte sobre el negro */
-    transition: transform 0.3s ease;
+    background: none;
+    border: none;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    color: #000000; /* Negro sobre blanco */
+    z-index: 2;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .styles-wishlist-btn:hover {
-    transform: scale(1.2) rotate(-10deg);
+    transform: scale(1.25);
 }
 
-/* Info y Tipografía */
-.styles-product-info { 
-    padding: 10px 0;
-    text-align: center; /* Centrado editorial */
+/* =========================
+    INFO Y TIPOGRAFÍA
+========================= */
+.styles-product-info {
+    padding: 0;
+    text-align: center;
 }
 
-.styles-product-title { 
-    font-family: var(--font-luxury);
-    font-size: 1rem; 
-    font-weight: 400; 
+.styles-info-main {
+    margin-bottom: 15px;
+}
+
+.styles-product-title {
+    font-family: var(--font-luxury); /* Garamond */
+    font-size: 1.1rem;
+    font-weight: 400;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: var(--old-paper);
+    color: #000000;
+    margin-bottom: 8px;
 }
 
-.styles-product-price { 
-    font-family: var(--font-detail);
-    font-size: 0.85rem; 
-    color: var(--old-paper);
-    opacity: 0.6;
-    margin-top: 5px;
+.styles-product-price {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    color: #000000;
+    font-weight: 400;
+    letter-spacing: 1px;
 }
 
-/* Variantes de Color (Estilo Botones de Sastre) */
+/* =========================
+    VARIANTES (Minimalismo Puro)
+========================= */
 .styles-color-variants {
-    display: flex; gap: 12px; margin: 15px 0;
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
     justify-content: center;
 }
 
 .variant-dot {
-    width: 14px; height: 14px; 
-    border-radius: 0; /* Cuadrados para ser más arquitectónicos/vintage */
-    border: 1px solid var(--old-paper);
+    width: 12px;
+    height: 12px;
+    border-radius: 0;
+    border: 1px solid #e0e0e0;
     cursor: pointer;
-    transition: 0.3s;
+    transition: var(--luxury-transition);
 }
 
-.variant-dot:hover {
-    outline: 1px solid var(--old-paper);
-    outline-offset: 3px;
+.variant-dot.selected {
+    border: 1px solid #000000;
+    transform: scale(1.2);
 }
 
-/* BOTÓN DE COMPRA (Etiqueta de lujo) */
+/* =========================
+    BOTÓN DE COMPRA
+========================= */
 .styles-add-button-final {
     width: 100%;
-    background: transparent;
-    color: var(--old-paper);
-    border: 1px solid var(--old-paper);
-    padding: 15px;
-    font-family: var(--font-detail);
+    background: #000000; /* Botón negro sólido sobre fondo blanco */
+    color: #ffffff;
+    border: 1px solid #000000;
+    padding: 18px;
+    font-family: var(--font-ui);
     font-size: 10px;
-    letter-spacing: 3px;
+    font-weight: 600;
+    letter-spacing: 4px;
     text-transform: uppercase;
     cursor: pointer;
-    margin-top: 15px;
-    transition: var(--transition-smooth);
+    margin-top: 10px;
+    transition: var(--luxury-transition);
 }
 
-.styles-add-button-final:hover {
-    background: var(--old-paper);
-    color: var(--bg-dark);
+.styles-add-button-final:hover:not(:disabled) {
+    background: transparent;
+    color: #000000;
+}
+
+.styles-add-button-final:disabled {
+    background: #f5f5f5;
+    color: #cccccc;
+    border-color: #f5f5f5;
+    cursor: not-allowed;
 }

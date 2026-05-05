@@ -1,16 +1,18 @@
 /* 1. FUENTES */
-@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=Inter:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=Inter:wght@200;400;600&display=swap');
 
 :root {
     --bg-deep: #000000;
-    --pearl-white: #ffffff;
+    --pearl-white: #000000;
     --font-editorial: 'Pirata One', cursive;
     --font-ui: 'Inter', sans-serif;
-    --luxury-transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    /* Transición tipo "Expo" para sensación de lujo */
+    --luxury-transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    --border-editorial: 1px solid #000000;
 }
 
 /* =========================
-    NAVBAR
+    NAVBAR (Minimalismo Blanco)
 ========================= */
 .styles-navbar-pro {
     position: fixed;
@@ -19,67 +21,74 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 20px 60px; 
+    align-items: center;
+    padding: 20px 60px; /* Un poco más de aire lateral */
     z-index: 1000;
-    background: #020202;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.98); /* Casi opaco para que no se pierda al hacer scroll */
+    border-bottom: var(--border-editorial);
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
 }
 
 .nav-brand {
     font-family: var(--font-editorial);
-    font-size: 32px;
-    letter-spacing: 3px;
+    font-size: 34px;
+    letter-spacing: 6px; /* Espaciado más dramático */
     text-transform: uppercase;
-    color: var(--pearl-white);
+    color: black;
+    cursor: pointer;
+    transition: var(--luxury-transition);
+}
+
+.nav-brand:hover {
+    opacity: 0.6;
 }
 
 .nav-right-section {
     display: flex;
     align-items: center;
-    gap: 35px;
+    gap: 45px;
 }
 
 /* =========================
-    CARRITO (CONTENEDOR PADRE)
+    CARRITO (Look Galería de Arte)
 ========================= */
 .cart-sidebar {
     position: fixed !important;
     top: 0 !important;
-    right: 0 !important; /* Mantenemos el eje en 0 */
-    width: 450px !important;
+    right: 0 !important;
+    width: 480px !important;
     height: 100vh !important;
-    background: #000000;
-    z-index: 9999 !important; /* Por encima de todo */
-    
-    /* TRUCO: Lo movemos con transform para que sea más fluido */
-    transform: translateX(100%); 
+    background: var(--bg-deep);
+    z-index: 9999 !important;
+    border-left: var(--border-editorial);
+
+    transform: translateX(100%);
     visibility: hidden;
-    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.5s;
+    /* Suavizado de la entrada */
+    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.8s;
 }
 
-/* Cuando Angular añade la clase .open */
 .cart-sidebar.open {
-    transform: translateX(0); /* Vuelve a su sitio */
+    transform: translateX(0);
     visibility: visible;
-    box-shadow: -20px 0 50px rgba(0,0,0,0.9);
+    box-shadow: -15px 0 50px rgba(0,0,0,0.03); /* Sombra casi imperceptible */
 }
 
-/* OVERLAY (FONDO OSCURO) */
+/* OVERLAY (Suave y con desenfoque) */
 .cart-overlay {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
-    background: rgba(0, 0, 0, 0.7) !important;
-    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(8px); /* Más desenfoque para dar profundidad */
     z-index: 1500;
     cursor: pointer;
 }
 
-/* LIMPIEZA DEL COMPONENTE HIJO (Importante) */
-/* Esto evita que el aside de dentro del componente rompa el diseño */
+/* LIMPIEZA DEL COMPONENTE HIJO */
 app-carrito .styles-cart-container {
     position: relative !important;
     right: auto !important;
@@ -88,33 +97,57 @@ app-carrito .styles-cart-container {
     height: 100% !important;
     background: transparent !important;
     border: none !important;
+    color: black
 }
 
 /* =========================
-    BOTONES Y OTROS
+    ELEMENTOS INTERNOS
 ========================= */
 .btn-close {
     background: transparent;
     border: none;
-    color: white;
-    font-size: 30px;
+    color: black;
+    font-size: 26px;
+    font-weight: 200;
     cursor: pointer;
     line-height: 1;
+    transition: var(--luxury-transition);
+}
+
+.btn-close:hover {
+    transform: rotate(90deg); /* Giro elegante al cerrar */
+    opacity: 0.5;
 }
 
 .nav-search-input {
     font-family: var(--font-ui);
-    font-size: 12px;
-    color: var(--pearl-white);
+    font-size: 10px; /* Texto pequeño, muy fashion */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: black;
     background: transparent;
     border: none;
     outline: none;
+    border-bottom: 1px solid transparent;
+    transition: var(--luxury-transition);
+    padding-bottom: 2px;
+}
+
+.nav-search-input:focus {
+    border-bottom: 1px solid black;
 }
 
 .footer-massive-logo {
     font-family: var(--font-editorial);
-    font-size: 15vw;
-    color: var(--pearl-white);
-    opacity: 0.05;
+    font-size: 18vw;
+    color: #000000;
+    opacity: 0.04; /* Ligeramente más visible sobre blanco */
     text-align: center;
+    margin-top: 150px;
+    padding-bottom: 50px;
+    user-select: none;
+    pointer-events: none;
+    letter-spacing: -2px;
 }
+
+

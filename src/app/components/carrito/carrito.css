@@ -1,58 +1,70 @@
-/* --- CONTENEDOR PADRE --- */
+/* --- CONTENEDOR PADRE (Look Galería Blanca) --- */
 .styles-cart-container {
     position: fixed;
     top: 0;
     right: 0;
-    width: 450px;
+    width: 480px; /* Un poco más ancho para elegancia editorial */
     height: 100vh;
-    background: #0a0a0a !important;
-    color: var(--old-paper);
-    padding: 40px;
+    background: #ffffff !important; /* Fondo blanco puro */
+    color: #000000;
+    padding: 60px 40px; /* Más aire en los bordes */
     display: flex;
     flex-direction: column;
-    border-left: 1px solid rgba(201, 185, 154, 0.1);
+    border-left: 1px solid #eeeeee; /* Línea casi invisible */
     z-index: 2000;
+    box-sizing: border-box;
 }
 
-/* --- HEADER (Corregido para alinear la X) --- */
+/* --- HEADER --- */
 .cart-header {
-    display: flex; /* Alinea hijos en línea */
-    justify-content: space-between; /* Manda el título a la izquierda y la X a la derecha */
+    display: flex;
+    justify-content: space-between;
     align-items: flex-start;
-    border-bottom: 1px solid rgba(201, 185, 154, 0.1);
-    padding-bottom: 20px;
-    margin-bottom: 20px;
+    border-bottom: 1px solid #000000; /* Línea negra sólida y fina */
+    padding-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 .header-titles {
     display: flex;
     flex-direction: column;
+    gap: 5px;
 }
 
 .cart-header h3 {
-    font-family: var(--font-gothic);
-    font-size: 1.8rem;
-    color: var(--old-paper);
-    margin: 0; /* Quitamos márgenes para que no descuadre */
+    font-family: var(--font-editorial); /* Pirata One */
+    font-size: 2.2rem;
+    color: #000000;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.item-count {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    opacity: 0.5;
 }
 
 /* --- BOTÓN CERRAR --- */
 .btn-close {
     background: none;
     border: none;
-    color: var(--old-paper);
-    font-size: 2.5rem; /* Un poco más grande para que sea fácil de clickar */
+    color: #000000;
+    font-size: 30px;
     font-weight: 200;
     cursor: pointer;
-    line-height: 0.7; /* Ajuste para que la X no baje el header */
+    line-height: 0.5;
     padding: 0;
-    opacity: 0.7;
-    transition: all 0.3s ease;
+    transition: var(--luxury-transition);
 }
 
 .btn-close:hover {
-    opacity: 1;
-    transform: scale(1.1);
+    opacity: 0.4;
+    transform: rotate(90deg); /* Giro elegante al cerrar */
 }
 
 /* --- LISTADO DE ITEMS --- */
@@ -66,92 +78,146 @@
 .cart-items-list {
     flex: 1;
     overflow-y: auto;
-    padding-right: 10px;
+    padding-right: 5px;
+}
+
+/* Scrollbar minimalista para el carrito */
+.cart-items-list::-webkit-scrollbar {
+    width: 2px;
+}
+.cart-items-list::-webkit-scrollbar-thumb {
+    background: #e0e0e0;
 }
 
 .cart-item {
     display: flex;
     justify-content: space-between;
-    padding: 20px 0;
-    border-bottom: 1px solid rgba(201, 185, 154, 0.05);
+    align-items: center;
+    padding: 25px 0;
+    border-bottom: 1px solid #f5f5f5;
 }
 
 .item-name {
-    font-family: var(--font-luxury);
+    font-family: var(--font-luxury); /* Cormorant Garamond */
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 1rem;
     letter-spacing: 1px;
-    color: var(--old-paper);
+    color: #000000;
+    margin-bottom: 8px;
 }
 
 .item-details {
-    font-family: var(--font-luxury);
-    font-style: italic;
-    font-size: 0.8rem;
-    opacity: 0.6;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #888888;
 }
 
-/* --- EL FOOTER --- */
+.item-total-price {
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* --- EL FOOTER DEL CARRITO --- */
 .cart-footer {
     margin-top: auto;
     padding-top: 30px;
-    border-top: 1px solid var(--old-paper);
-    background: #0a0a0a;
+    border-top: 1px solid #000000;
+    background: #ffffff;
+}
+
+.summary-details {
+    margin-bottom: 25px;
 }
 
 .summary-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
-    font-family: var(--font-luxury);
-    font-size: 0.9rem;
+    margin-bottom: 12px;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
 .summary-row.total {
-    margin-top: 15px;
+    margin-top: 20px;
     font-weight: 700;
-    font-size: 1.3rem;
-    color: var(--old-paper);
+    font-size: 1.4rem;
+    color: #000000;
+    border-top: 1px solid #f5f5f5;
+    padding-top: 20px;
+}
+
+.free-label {
+    font-style: italic;
+    color: #888888;
 }
 
 /* --- BOTONES --- */
 .btn-remove {
     background: none;
     border: none;
-    color: var(--accent-crimson);
-    font-family: var(--font-detail);
-    font-size: 10px;
+    color: #000000;
+    font-family: var(--font-ui);
+    font-size: 9px;
     text-transform: uppercase;
     cursor: pointer;
     text-decoration: underline;
-    opacity: 0.6;
+    opacity: 0.4;
+    padding: 0;
+    transition: opacity 0.3s ease;
+}
+
+.btn-remove:hover {
+    opacity: 1;
+    color: var(--accent-crimson);
 }
 
 .btn-checkout {
     width: 100%;
-    background: var(--old-paper);
-    color: #000;
-    border: 1px solid var(--old-paper);
-    padding: 20px;
-    margin-top: 25px;
-    font-family: var(--font-detail);
-    font-weight: 700;
-    letter-spacing: 4px;
+    background: #000000; /* Bloque negro sobre fondo blanco */
+    color: #ffffff;
+    border: 1px solid #000000;
+    padding: 22px;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 5px;
     text-transform: uppercase;
     cursor: pointer;
-    transition: all 0.4s ease;
+    transition: var(--luxury-transition);
 }
 
 .btn-checkout:hover {
     background: transparent;
-    color: var(--old-paper);
+    color: #000000;
 }
 
 /* --- ESTADO VACÍO --- */
 .empty-state {
     text-align: center;
-    padding: 100px 0;
-    font-family: var(--font-luxury);
-    font-style: italic;
-    opacity: 0.4;
+    padding: 120px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.empty-state p {
+    font-family: var(--font-editorial);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+.empty-state small {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.5;
 }

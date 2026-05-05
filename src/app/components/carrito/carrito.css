@@ -1,142 +1,157 @@
-/* --- CONTENEDOR PRINCIPAL (Minimalismo Radical) --- */
-.cart-card {
-    background: var(--white);
-    padding: 0;
-    border-top: 2px solid var(--black);
-    font-family: var(--font-main);
+/* --- CONTENEDOR PADRE --- */
+.styles-cart-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 450px;
+    height: 100vh;
+    background: #0a0a0a !important;
+    color: var(--old-paper);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid rgba(201, 185, 154, 0.1);
+    z-index: 2000;
 }
 
+/* --- HEADER (Corregido para alinear la X) --- */
 .cart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 20px 0;
+    display: flex; /* Alinea hijos en línea */
+    justify-content: space-between; /* Manda el título a la izquierda y la X a la derecha */
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(201, 185, 154, 0.1);
+    padding-bottom: 20px;
     margin-bottom: 20px;
-    border-bottom: 1px solid var(--gray-light);
+}
+
+.header-titles {
+    display: flex;
+    flex-direction: column;
 }
 
 .cart-header h3 {
-    font-size: 1.1rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    margin: 0;
+    font-family: var(--font-gothic);
+    font-size: 1.8rem;
+    color: var(--old-paper);
+    margin: 0; /* Quitamos márgenes para que no descuadre */
 }
 
-.item-count {
-    font-size: 0.65rem;
-    font-weight: 600;
-    color: var(--gray-dark);
-    letter-spacing: 0.05em;
+/* --- BOTÓN CERRAR --- */
+.btn-close {
+    background: none;
+    border: none;
+    color: var(--old-paper);
+    font-size: 2.5rem; /* Un poco más grande para que sea fácil de clickar */
+    font-weight: 200;
+    cursor: pointer;
+    line-height: 0.7; /* Ajuste para que la X no baje el header */
+    padding: 0;
+    opacity: 0.7;
+    transition: all 0.3s ease;
 }
 
-/* --- ITEMS DEL CARRITO --- */
+.btn-close:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* --- LISTADO DE ITEMS --- */
+.cart-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.cart-items-list {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
 .cart-item {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
     padding: 20px 0;
-    border-bottom: 1px solid var(--off-white);
-    transition: var(--transition);
+    border-bottom: 1px solid rgba(201, 185, 154, 0.05);
 }
 
 .item-name {
-    display: block;
-    font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 0.03em;
+    font-family: var(--font-luxury);
     text-transform: uppercase;
-    margin-bottom: 4px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: var(--old-paper);
 }
 
-.item-meta {
-    font-size: 0.75rem;
-    color: var(--gray-dark);
-    font-weight: 400;
+.item-details {
+    font-family: var(--font-luxury);
+    font-style: italic;
+    font-size: 0.8rem;
+    opacity: 0.6;
 }
 
-.item-actions {
-    text-align: right;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 8px;
-}
-
-.item-price {
-    font-weight: 700;
-    font-size: 0.85rem;
-}
-
-/* --- BOTÓN ELIMINAR (Sutil y Elegante) --- */
-.btn-remove {
-    background: none;
-    border: none;
-    color: var(--black);
-    font-size: 0.7rem;
-    font-weight: 400;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    cursor: pointer;
-    padding: 0;
-    opacity: 0.4;
-    transition: opacity 0.3s;
-}
-
-.btn-remove:hover {
-    opacity: 1;
-}
-
-/* --- RESUMEN FINAL --- */
-.cart-summary {
-    margin-top: 40px;
-    padding: 0;
+/* --- EL FOOTER --- */
+.cart-footer {
+    margin-top: auto;
+    padding-top: 30px;
+    border-top: 1px solid var(--old-paper);
+    background: #0a0a0a;
 }
 
 .summary-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 12px;
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: var(--gray-dark);
+    margin-bottom: 10px;
+    font-family: var(--font-luxury);
+    font-size: 0.9rem;
 }
 
 .summary-row.total {
-    border-top: 1px solid var(--black);
-    padding-top: 20px;
-    margin-top: 20px;
-    color: var(--black);
-    font-weight: 800;
-    font-size: 1.2rem;
-    letter-spacing: -0.02em;
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--old-paper);
 }
 
-/* --- BOTÓN CHECKOUT (Impacto Visual) --- */
+/* --- BOTONES --- */
+.btn-remove {
+    background: none;
+    border: none;
+    color: var(--accent-crimson);
+    font-family: var(--font-detail);
+    font-size: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: underline;
+    opacity: 0.6;
+}
+
 .btn-checkout {
     width: 100%;
-    background: var(--black);
-    color: var(--white);
-    border: 1px solid var(--black);
+    background: var(--old-paper);
+    color: #000;
+    border: 1px solid var(--old-paper);
     padding: 20px;
-    font-size: 0.8rem;
+    margin-top: 25px;
+    font-family: var(--font-detail);
     font-weight: 700;
+    letter-spacing: 4px;
     text-transform: uppercase;
-    letter-spacing: 0.3em; /* Espaciado muy amplio para lujo */
     cursor: pointer;
-    margin-top: 30px;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.4s ease;
 }
 
 .btn-checkout:hover {
-    background: var(--white);
-    color: var(--black);
+    background: transparent;
+    color: var(--old-paper);
 }
 
+/* --- ESTADO VACÍO --- */
 .empty-state {
     text-align: center;
-    padding: 60px 0;
-    color: var(--gray-light);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    padding: 100px 0;
+    font-family: var(--font-luxury);
+    font-style: italic;
+    opacity: 0.4;
 }

@@ -1,95 +1,131 @@
+/* =========================
+    LOGIN SECTION (Dark Luxury)
+========================= */
 .login-container {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #fff;
+    /* Fondo oscuro con el degradado de viñeta que definimos */
+    background-color: var(--bg-dark);
+    background-image: radial-gradient(circle, #1a1a1a 0%, #050505 100%);
 }
 
 .login-box {
     width: 100%;
-    max-width: 400px;
-    padding: 40px;
+    max-width: 450px;
+    padding: 60px;
     text-align: center;
+    /* Un borde muy sutil para enmarcar el formulario */
+    border: 1px solid rgba(201, 185, 154, 0.1);
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
 }
 
 .login-title {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 2.5rem;
-    letter-spacing: -2px;
-    margin-bottom: 10px;
+    font-family: var(--font-gothic); /* Tipografía gótica Burton */
+    font-size: 3rem;
+    color: var(--old-paper);
+    margin-bottom: 5px;
+    letter-spacing: 1px;
 }
 
 .login-subtitle {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 30px;
+    font-family: var(--font-luxury);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--old-paper);
+    opacity: 0.6;
+    margin-bottom: 40px;
 }
 
+/* =========================
+    INPUTS (Estilo Documento Antiguo)
+========================= */
 .input-group {
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .input-group label {
     display: block;
-    font-size: 11px;
+    font-family: var(--font-detail);
+    font-size: 10px;
+    color: var(--old-paper);
     text-transform: uppercase;
-    font-weight: 700;
-    margin-bottom: 8px;
-    letter-spacing: 1px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
 }
 
 .input-group input {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #e0e0e0;
-    border-radius: 0; /* Estilo cuadrado minimalista */
-    font-family: 'Inter', sans-serif;
-    box-sizing: border-box;
+    padding: 15px 0; /* Padding solo arriba y abajo */
+    background: transparent;
+    border: none;
+    /* Solo borde inferior para que parezca una línea de firma */
+    border-bottom: 1px solid rgba(201, 185, 154, 0.3);
+    color: var(--old-paper);
+    font-family: var(--font-luxury);
+    font-size: 1rem;
+    transition: var(--transition-smooth);
 }
 
+.input-group input:focus {
+    outline: none;
+    border-bottom: 1px solid var(--old-paper);
+}
+
+/* =========================
+    BOTÓN Y LINKS (Acción de Lujo)
+========================= */
 .login-btn {
     width: 100%;
-    padding: 15px;
-    background: #000;
-    color: #fff;
-    border: none;
+    padding: 18px;
+    background: var(--old-paper);
+    color: var(--bg-dark);
+    border: 1px solid var(--old-paper);
+    font-family: var(--font-detail);
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 3px;
     cursor: pointer;
-    transition: opacity 0.3s;
-    margin-top: 10px;
+    transition: var(--transition-smooth);
+    margin-top: 20px;
 }
 
 .login-btn:hover {
-    opacity: 0.8;
+    background: transparent;
+    color: var(--old-paper);
 }
 
 .login-footer {
-    margin-top: 25px;
-    font-size: 13px;
+    margin-top: 35px;
+    font-family: var(--font-luxury);
+    font-size: 0.9rem;
+    color: var(--old-paper);
+    opacity: 0.7;
 }
 
 .login-footer a {
-    color: #000;
+    color: var(--old-paper);
     font-weight: 700;
-    text-decoration: underline;
+    text-decoration: none;
+    border-bottom: 1px solid var(--old-paper);
+    padding-bottom: 2px;
 }
 
-
+/* MENSAJES DE ERROR (Estilo Advertencia Clásica) */
 .error-msg {
-    color: #ff4444; /* Rojo STYLES® */
-    font-size: 11px;
-    font-weight: 600;
-    margin-top: 4px;
-    display: block;
-    text-transform: uppercase; /* Para que parezca un aviso de diseño */
-    letter-spacing: 0.5px;
-    }
-
-    /* Opcional: poner el borde del input en rojo si hay error */
-    input.ng-invalid.ng-touched {
-    border-color: #ff4444;
+    color: #8b0000; /* Rojo sangre oscuro */
+    font-family: var(--font-detail);
+    font-size: 10px;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
+
+input.ng-invalid.ng-touched {
+    border-bottom-color: #8b0000 !important;
+}
+

@@ -3,7 +3,9 @@
     <article class="styles-product-card" *ngFor="let producto of listaFiltrada">
         
         <div class="styles-image-wrapper">
-            <span class="styles-tag" *ngIf="producto.stock < 10">LIMITED</span>
+            <!-- Etiqueta de Stock basada en tu modelo -->
+            <span class="styles-tag" *ngIf="producto.stock < 10 && producto.stock > 0">ÚLTIMAS UNIDADES</span>
+            <span class="styles-tag out-of-stock" *ngIf="producto.stock === 0">AGOTADO</span>
             
             <button class="styles-wishlist-btn">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -11,8 +13,9 @@
                 </svg>
             </button>
 
+            <!-- CAMBIO AQUÍ: Apuntamos a tu carpeta local 'img/' + el nombre en la DB -->
             <img
-                [src]="producto.imagenUrl"
+                [src]="'img/' + producto.imagen"
                 [alt]="producto.nombre"
                 class="styles-img"
                 loading="lazy">
@@ -21,16 +24,21 @@
         <div class="styles-product-info">
             <div class="styles-info-main">
                 <h3 class="styles-product-title">{{ producto.nombre }}</h3>
+                <!-- Mantenemos el pipe de currency para el precio -->
                 <p class="styles-product-price">{{ producto.precio | currency:'EUR' }}</p>
             </div>
             
+            <!-- Variantes (puedes dejarlas estáticas por ahora o quitarlas) -->
             <div class="styles-color-variants">
                 <span class="variant-dot selected" style="background-color: #D2B48C;"></span>
                 <span class="variant-dot" style="background-color: #ADD8E6;"></span>
             </div>
 
-            <button class="styles-add-button-final" (click)="agregarAlCarrito(producto)">
-                AÑADIR A LA CESTA
+            <!-- Botón de acción con el método que ya tienes -->
+            <button class="styles-add-button-final" 
+                    (click)="agregarAlCarrito(producto)"
+                    [disabled]="producto.stock === 0">
+                {{ producto.stock === 0 ? 'AGOTADO' : 'AÑADIR A LA CESTA' }}
             </button>
         </div>
 

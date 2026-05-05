@@ -1,8 +1,7 @@
 <nav class="styles-navbar-pro">
-  
   <div class="nav-container">
-    <div class="nav-brand" routerLink="/" style="cursor: pointer;">STYLES®STUDIO</div>
-    
+    <div class="nav-brand" routerLink="/" style="cursor: pointer;">VINTAGE®VIBES</div>
+
     <div class="nav-right-section">
       <div class="nav-search-container">
         <input
@@ -16,7 +15,7 @@
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
       </div>
-      
+
       @if (!authService.user()) {
         <div class="nav-login-icon" routerLink="/login" style="cursor: pointer;">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -38,9 +37,6 @@
               <div class="dropdown-user-info">
                 <span>Hola, {{ authService.user().username }}</span>
               </div>
-              <a routerLink="/my-orders" (click)="isUserMenuOpen = false">My Orders</a>
-              <a routerLink="/wishlist" (click)="isUserMenuOpen = false">My Wishlist</a>
-              <a routerLink="/returns" (click)="isUserMenuOpen = false">Returns</a>
               <div class="dropdown-divider"></div>
               <button class="logout-btn" (click)="logout()">Log Out</button>
             </div>
@@ -48,7 +44,7 @@
         </div>
       }
 
-      <div class="nav-cart-info" (click)="toggleCart()" style="cursor: pointer;">
+      <div class="nav-cart-info" (click)="toggleCart()" style="pointer-events: auto; cursor: pointer;">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="1 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="cart-icon">
           <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
           <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -56,25 +52,21 @@
         </svg>
         <span class="cart-count">({{ cartService.totalItems() }})</span>
       </div>
-
     </div>
   </div>
 </nav>
 
 <router-outlet></router-outlet>
 
+<!-- CARRITO: Aseguramos que escuche 'closeCart' y ejecute 'closeCart()' del padre -->
 <aside class="cart-sidebar" [class.open]="isCartOpen">
-    <div class="cart-header">
-      <span>CARRITO</span>
-      <button class="close-btn" (click)="toggleCart()">✕</button>
-    </div>
-    <app-carrito></app-carrito>
+    <app-carrito (closeCart)="closeCart()"></app-carrito>
 </aside>
 
 @if (isCartOpen) {
-  <div class="cart-overlay" (click)="toggleCart()"></div>
+  <div class="cart-overlay" (click)="closeCart()"></div>
 }
 
 <footer class="nude-footer">
-  <h1 class="footer-massive-logo">STYLES®</h1>
+  <h1 class="footer-massive-logo">VINTAGE®VIBES</h1>
 </footer>

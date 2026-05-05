@@ -1,83 +1,93 @@
-/* You can add global styles to this file, and also import other style files */
-/* 1. IMPORTACIÓN DE FUENTE (Inter es la reina del diseño moderno) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+/* 1. IMPORTACIÓN DE FUENTES: El alma de Disturbia */
+/* Pirata One para el look 'Sharp', Inter para el minimalismo moderno */
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=Inter:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap');
 
-/* 2. RESET TOTAL (Para tener control absoluto) */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
+/* 2. VARIABLES REFINADAS (Look Disturbia) */
 :root {
-    --font-main: 'Archivo Black', sans-serif; /* Para los títulos gigantes */
-    --font-body: 'Inter', sans-serif;         /* Para el resto de textos */
-    --black: #000000;
-    --white: #ffffff;
-    --off-white: #f5f5f5;
-    --gray-light: #e0e0e0;
-    --gray-dark: #666666;
-    --font-main: 'Inter', sans-serif;
-    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --bg-dark: #000000;           /* Negro absoluto */
+    --old-paper: #ffffff;         /* Blanco puro para contraste editorial */
+    --gray-muted: #888888;        /* Gris ceniza para textos secundarios */
+    --accent-crimson: #bc0000;    
+    --border-color: rgba(255, 255, 255, 0.1); /* Líneas de 1px ultra finas */
+    
+    /* Tipografías adaptadas a la referencia visual */
+    --font-gothic: 'Pirata One', cursive;      /* Títulos afilados */
+    --font-luxury: 'Cormorant Garamond', serif; /* Serif elegante */
+    --font-detail: 'Inter', sans-serif;         /* UI Limpia */
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* 3. BASE DEL SITIO */
 html, body {
     height: 100%;
-    background-color: var(--white);
-    color: var(--black);
-    font-family: var(--font-main);
-    line-height: 1.5;
+    background-color: var(--bg-dark);
+    /* Fondo con viñeta sutil para dar profundidad */
+    background-image: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
+    color: var(--old-paper);
+    font-family: var(--font-detail);
+    line-height: 1.4;
     overflow-x: hidden;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
 }
 
-/* 3. TIPOGRAFÍA PRO */
-h1, h2, h3, h4 {
-    font-weight: 800;
+/* 4. TIPOGRAFÍA EDITORIAL SHARP */
+h1, h2, h3 {
+    font-family: var(--font-gothic); /* Aplicamos la fuente afilada de la imagen */
+    font-weight: 400;
+    letter-spacing: 0.15em; /* Espaciado dramático de lujo */
     text-transform: uppercase;
-    letter-spacing: -0.02em;
+    color: var(--old-paper);
+    margin-bottom: 1.5rem;
+    line-height: 1;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: var(--transition);
+.gothic-touch {
+    font-family: var(--font-gothic);
+    letter-spacing: 0.05em;
 }
 
-ul {
-    list-style: none;
+p {
+    font-family: var(--font-detail);
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    color: var(--gray-muted);
 }
 
-/* 4. BARRA DE SCROLL MINIMALISTA */
+/* 5. SEPARADORES DE CUADRÍCULA (Look Disturbia) */
+hr {
+    border: none;
+    height: 1px;
+    background: var(--border-color);
+    margin: 40px 0;
+    width: 100%;
+}
+
+/* 6. SCROLLBAR MINIMALISTA */
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 3px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--white);
+    background: var(--bg-dark);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--black);
+    background: #444;
+    border-radius: 0;
 }
 
-/* 5. UTILIDADES PARA EL PORTAFOLIO */
-.container-pro {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 40px;
-}
-
-button {
-    font-family: var(--font-main);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
+/* Textura de grano cinemático */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* Usamos un ruido más fino y moderno */
+    background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); 
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 9999;
 }

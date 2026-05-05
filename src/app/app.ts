@@ -13,48 +13,46 @@ import { ProductoService } from './services/producto.service';
   styleUrl: './app.css'
 })
 export class App implements AfterViewInit {
-
-  private productoService = inject(ProductoService); // Inyecta el servicio de productos
-  onSearch(termino: string) {
-      // Enviamos el término al servicio para que otros lo escuchen
-      this.productoService.enviarTerminoBusqueda(termino);
-    }
-  
-  // Inyecciones
+  private productoService = inject(ProductoService);
   public cartService = inject(CartService);
-  public authService = inject(AuthService); // Inyectamos el AuthService real
+  public authService = inject(AuthService);
   private router = inject(Router);
 
-  // Estados
   protected readonly title = signal('tienda-ropa-app');
-  isCartOpen = false;
-  isUserMenuOpen = false; // Variable para el menú de usuario
+  isCartOpen = false; // Estado del carrito
+  isUserMenuOpen = false;
+
+  onSearch(termino: string) {
+    this.productoService.enviarTerminoBusqueda(termino);
+  }
 
   ngAfterViewInit() {
-    // Lógica de videos
     const videos = document.querySelectorAll('video');
     videos.forEach(video => {
       video.muted = true;
       video.play().catch(error => console.log("Autoplay listo", error));
     });
-
-    // Desaparición del preloader
     this.ocultarPreloader();
   }
 
-  // Lógica del menú de usuario
   toggleUserMenu() {
     this.isUserMenuOpen = !this.isUserMenuOpen;
   }
 
   logout() {
-    this.authService.logout(); // Limpia el localStorage y el signal
-    this.isUserMenuOpen = false; // Cierra el menú
-    this.router.navigate(['/login']); // Redirige al login al salir
+    this.authService.logout();
+    this.isUserMenuOpen = false;
+    this.router.navigate(['/login']);
   }
 
+  // Abre o cierra (para el icono de la bolsa)
   toggleCart() {
     this.isCartOpen = !this.isCartOpen;
+  }
+
+  // Fuerza el cierre (para la X del carrito)
+  closeCart() {
+    this.isCartOpen = false;
   }
 
   private ocultarPreloader() {

@@ -9,4 +9,5 @@ export class Producto {
     stock!: number;
     createAt!: string;
     categoria!: Categoria;
+imagen: any;
 }

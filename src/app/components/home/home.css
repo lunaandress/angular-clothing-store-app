@@ -1,133 +1,144 @@
-/* Arreglo de videos para que no se desmadren */
+/* =========================
+    HERO SECTION (Impacto Raw)
+========================= */
+.hero-section {
+    height: 85vh;
+    position: relative;
+    overflow: hidden;
+    background-color: #000000; /* Negro puro */
+}
+
+.hero-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Look Disturbia: Menos sepia, más contraste dramático */
+    filter: brightness(0.7) contrast(1.2) grayscale(30%);
+    transition: transform 10s linear;
+}
+
+.hero-section:hover img {
+    transform: scale(1.1); /* Efecto Ken Burns de lujo */
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    width: 90%;
+    z-index: 5;
+}
+
+.hero-title {
+    font-family: var(--font-gothic); /* Pirata One */
+    font-size: 14vw; /* Aumentamos el tamaño para dramatismo */
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 0.8;
+    margin: 0;
+    color: #fff;
+    /* Eliminamos sombras pesadas, usamos un glow sutil o nada */
+    text-shadow: none; 
+    pointer-events: none;
+}
+
+/* =========================
+    VIDEO SPLIT (División Nítida)
+========================= */
 .split-video-section {
     display: flex;
     width: 100%;
-    height: 70vh; /* Bajamos un poco la altura para que no sea tan gigante */
+    height: 80vh;
     overflow: hidden;
     background-color: #000;
+    gap: 1px; /* Línea divisoria mínima y afilada */
 }
 
 .video-wrapper {
     position: relative;
     flex: 1;
     height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Marco sutil */
 }
 
 .side-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    opacity: 0.6;
+    transition: opacity 0.6s ease;
+}
+
+.video-wrapper:hover .side-video {
+    opacity: 0.9;
 }
 
 .video-overlay-text {
     position: absolute;
     bottom: 50px;
     left: 40px;
-    color: white;
+    color: #fff;
     z-index: 10;
 }
 
 .video-title {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: 2.5vw;
+    font-family: var(--font-gothic); /* Usamos la gótica también aquí */
+    font-weight: 400;
+    font-size: 3.5vw;
     margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .video-btn {
-    padding: 10px 25px;
-    border: 1px solid white;
-    border-radius: 50px;
-    color: white;
+    display: inline-block;
+    padding: 15px 40px;
+    border: 1px solid #fff;
+    border-radius: 0; 
+    color: #fff;
     text-decoration: none;
+    font-family: var(--font-detail); /* Inter */
     font-size: 11px;
+    font-weight: 700;
     text-transform: uppercase;
-    margin-right: 10px;
+    letter-spacing: 4px;
+    background: transparent;
+    transition: all 0.3s ease;
 }
 
-/* Estilo para el botón de "Ver todos" */
+.video-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* =========================
+    VIEW ALL (Minimalismo Editorial)
+========================= */
 .view-all-container {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 60px 0;
+    padding: 80px 0;
 }
 
 .view-all-link {
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #000;
+    font-family: var(--font-detail); /* Inter para look moderno */
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
     text-decoration: none;
-    border-bottom: 2px solid #000;
-    padding-bottom: 4px;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 5px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
 }
 
 .view-all-link:hover {
-    letter-spacing: 2px;
+    letter-spacing: 8px;
     opacity: 0.7;
-}
-
-/* 1. El contenedor padre debe ser relativo */
-.hero-section {
-    position: relative;
-    width: 100%;
-    height: 70vh; /* O la altura que tengas definida */
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-/* 2. El contenedor del video también debe ser relativo para que el texto flote sobre él */
-.video-placeholder {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-/* =========================
-    HERO SECTION
-========================= */
-
-.hero-section {
-    height: 80vh;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Imagen de fondo */
-.hero-section img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Contenido centrado */
-.hero-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    text-align: center;
-    color: white;
-}
-
-/* Título gigante estilo brand */
-.hero-title {
-    font-family: 'Archivo Black', sans-serif;
-
-    font-size: 10vw;           /* Responsive gigante */
-    font-weight: 400;          /* (10 no es válido → lo ajusto) */
-
-    text-transform: uppercase;
-    letter-spacing: -0.06em;
-    line-height: 0.8;
-
-    margin: 0;
-    color: #fff;
-
-    pointer-events: none; /* No bloquea clicks */
 }

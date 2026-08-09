@@ -1,142 +1,223 @@
-/* --- CONTENEDOR PRINCIPAL (Minimalismo Radical) --- */
-.cart-card {
-    background: var(--white);
-    padding: 0;
-    border-top: 2px solid var(--black);
-    font-family: var(--font-main);
+/* --- CONTENEDOR PADRE (Look Galería Blanca) --- */
+.styles-cart-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 480px; /* Un poco más ancho para elegancia editorial */
+    height: 100vh;
+    background: #ffffff !important; /* Fondo blanco puro */
+    color: #000000;
+    padding: 60px 40px; /* Más aire en los bordes */
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #eeeeee; /* Línea casi invisible */
+    z-index: 2000;
+    box-sizing: border-box;
 }
 
+/* --- HEADER --- */
 .cart-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    padding: 20px 0;
-    margin-bottom: 20px;
-    border-bottom: 1px solid var(--gray-light);
+    align-items: flex-start;
+    border-bottom: 1px solid #000000; /* Línea negra sólida y fina */
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+.header-titles {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .cart-header h3 {
-    font-size: 1.1rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
+    font-family: var(--font-editorial); /* Pirata One */
+    font-size: 2.2rem;
+    color: #000000;
     margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .item-count {
-    font-size: 0.65rem;
+    font-family: var(--font-ui);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     font-weight: 600;
-    color: var(--gray-dark);
-    letter-spacing: 0.05em;
+    opacity: 0.5;
 }
 
-/* --- ITEMS DEL CARRITO --- */
+/* --- BOTÓN CERRAR --- */
+.btn-close {
+    background: none;
+    border: none;
+    color: #000000;
+    font-size: 30px;
+    font-weight: 200;
+    cursor: pointer;
+    line-height: 0.5;
+    padding: 0;
+    transition: var(--luxury-transition);
+}
+
+.btn-close:hover {
+    opacity: 0.4;
+    transform: rotate(90deg); /* Giro elegante al cerrar */
+}
+
+/* --- LISTADO DE ITEMS --- */
+.cart-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.cart-items-list {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Scrollbar minimalista para el carrito */
+.cart-items-list::-webkit-scrollbar {
+    width: 2px;
+}
+.cart-items-list::-webkit-scrollbar-thumb {
+    background: #e0e0e0;
+}
+
 .cart-item {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--off-white);
-    transition: var(--transition);
+    align-items: center;
+    padding: 25px 0;
+    border-bottom: 1px solid #f5f5f5;
 }
 
 .item-name {
-    display: block;
-    font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 0.03em;
+    font-family: var(--font-luxury); /* Cormorant Garamond */
     text-transform: uppercase;
-    margin-bottom: 4px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: #000000;
+    margin-bottom: 8px;
 }
 
-.item-meta {
-    font-size: 0.75rem;
-    color: var(--gray-dark);
-    font-weight: 400;
+.item-details {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #888888;
 }
 
-.item-actions {
-    text-align: right;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 8px;
+.item-total-price {
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 10px;
 }
 
-.item-price {
-    font-weight: 700;
-    font-size: 0.85rem;
+/* --- EL FOOTER DEL CARRITO --- */
+.cart-footer {
+    margin-top: auto;
+    padding-top: 30px;
+    border-top: 1px solid #000000;
+    background: #ffffff;
 }
 
-/* --- BOTÓN ELIMINAR (Sutil y Elegante) --- */
-.btn-remove {
-    background: none;
-    border: none;
-    color: var(--black);
-    font-size: 0.7rem;
-    font-weight: 400;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    cursor: pointer;
-    padding: 0;
-    opacity: 0.4;
-    transition: opacity 0.3s;
-}
-
-.btn-remove:hover {
-    opacity: 1;
-}
-
-/* --- RESUMEN FINAL --- */
-.cart-summary {
-    margin-top: 40px;
-    padding: 0;
+.summary-details {
+    margin-bottom: 25px;
 }
 
 .summary-row {
     display: flex;
     justify-content: space-between;
     margin-bottom: 12px;
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: var(--gray-dark);
+    font-family: var(--font-ui);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
 .summary-row.total {
-    border-top: 1px solid var(--black);
-    padding-top: 20px;
     margin-top: 20px;
-    color: var(--black);
-    font-weight: 800;
-    font-size: 1.2rem;
-    letter-spacing: -0.02em;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #000000;
+    border-top: 1px solid #f5f5f5;
+    padding-top: 20px;
 }
 
-/* --- BOTÓN CHECKOUT (Impacto Visual) --- */
+.free-label {
+    font-style: italic;
+    color: #888888;
+}
+
+/* --- BOTONES --- */
+.btn-remove {
+    background: none;
+    border: none;
+    color: #000000;
+    font-family: var(--font-ui);
+    font-size: 9px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: underline;
+    opacity: 0.4;
+    padding: 0;
+    transition: opacity 0.3s ease;
+}
+
+.btn-remove:hover {
+    opacity: 1;
+    color: var(--accent-crimson);
+}
+
 .btn-checkout {
     width: 100%;
-    background: var(--black);
-    color: var(--white);
-    border: 1px solid var(--black);
-    padding: 20px;
-    font-size: 0.8rem;
-    font-weight: 700;
+    background: #000000; /* Bloque negro sobre fondo blanco */
+    color: #ffffff;
+    border: 1px solid #000000;
+    padding: 22px;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 5px;
     text-transform: uppercase;
-    letter-spacing: 0.3em; /* Espaciado muy amplio para lujo */
     cursor: pointer;
-    margin-top: 30px;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: var(--luxury-transition);
 }
 
 .btn-checkout:hover {
-    background: var(--white);
-    color: var(--black);
+    background: transparent;
+    color: #000000;
 }
 
+/* --- ESTADO VACÍO --- */
 .empty-state {
     text-align: center;
-    padding: 60px 0;
-    color: var(--gray-light);
-    font-size: 0.8rem;
+    padding: 120px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.empty-state p {
+    font-family: var(--font-editorial);
+    font-size: 1.5rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    color: #000000;
+}
+
+.empty-state small {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.5;
 }

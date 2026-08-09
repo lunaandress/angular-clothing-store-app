@@ -1,12 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, signal } from '@angular/core';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { Producto } from '../../models/producto';
+import { CartService } from '../../services/cart.service';
 import { ProductoService } from '../../services/producto.service';
-import { CartService } from '../../services/cart.service'; // <--- NUEVO IMPORT
-
-interface ProductoVisual extends Producto {
-  imagenUrl?: string;
-}
 
 @Component({
   selector: 'app-productos',
@@ -18,44 +15,54 @@ interface ProductoVisual extends Producto {
 export class ProductosComponent implements OnInit {
 
   @Input() limit: number = 0;
-  get listaFiltrada(){
+  
+  productos = signal<Producto[]>([]);
+
+  // Getter para la lista que se muestra en el HTML
+  get listaFiltrada() {
     return this.limit > 0 ? this.productos().slice(0, this.limit) : this.productos();
   }
-  productos = signal<ProductoVisual[]>([]);
-
-
-  private fotosCatalogo = [
-    'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1539109132381-31a1ec6ce7a2?q=80&w=800&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=800&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1485230895905-ec17ba36b5bc?q=80&w=800&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1529139513477-3235a1191e21?q=80&w=800&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=800&auto=format&fit=crop'
-  ];
-
 
   constructor(
     private service: ProductoService,
-    public cartService: CartService // <--- INYECTAMOS EL CARRITO
+    public cartService: CartService 
   ) { }
 
   ngOnInit(): void {
+    // 1. Carga inicial
+    this.cargarTodosLosProductos();
+
+    // 2. Suscripción al buscador
+    this.service.search$.pipe(
+      debounceTime(300),
+      distinctUntilChanged()
+    ).subscribe({
+      next: (termino) => {
+        if (termino.trim().length > 0) {
+          this.buscarProductos(termino);
+        } else {
+          this.cargarTodosLosProductos();
+        }
+      }
+    });
+  }
+
+  private cargarTodosLosProductos() {
     this.service.getProductos().subscribe({
-      next: (prods) => {
-        const prodsConFotos = prods.map((p, index) => ({
-          ...p,
-          imagenUrl: this.fotosCatalogo[index % this.fotosCatalogo.length]
-        }));
-        this.productos.set(prodsConFotos);
-      },
+      next: (prods) => this.productos.set(prods), // Ahora guardamos los productos tal cual vienen
       error: (err) => console.error("Error al traer datos de Java", err)
     });
   }
 
-  // AHORA ESTA FUNCIÓN NO LLAMA A JAVA
-  agregarAlCarrito(producto: any) {
+  private buscarProductos(termino: string) {
+    this.service.buscarPorNombre(termino).subscribe({
+      next: (prods) => this.productos.set(prods),
+      error: (err) => console.error("Error en la búsqueda", err)
+    });
+  }
+
+  agregarAlCarrito(producto: Producto) {
     this.cartService.agregarProducto(producto);
-    console.log('Producto en memoria:', this.cartService.items());
+    console.log('Producto en carrito:', this.cartService.items());
   }
 }

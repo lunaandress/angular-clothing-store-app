@@ -1,79 +1,144 @@
+/* =========================
+    LOGIN SECTION (White Luxury)
+========================= */
 .login-container {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #fff;
+    background-color: #ffffff; /* Fondo blanco puro */
+    background-image: none; /* Eliminamos el degradado oscuro */
 }
 
 .login-box {
     width: 100%;
-    max-width: 400px;
-    padding: 40px;
+    max-width: 450px;
+    padding: 60px;
     text-align: center;
+    /* En blanco, el borde debe ser casi imperceptible */
+    border: 1px solid #f0f0f0;
+    background: #ffffff;
+    backdrop-filter: none; /* Ya no necesitamos blur sobre blanco */
 }
 
 .login-title {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 2.5rem;
-    letter-spacing: -2px;
-    margin-bottom: 10px;
+    font-family: var(--font-gothic);
+    font-size: 4rem; /* Más grande para impacto editorial */
+    color: #000000;
+    margin-bottom: 5px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    line-height: 1;
 }
 
 .login-subtitle {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 30px;
+    font-family: var(--font-luxury);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #888888; /* Gris suave */
+    opacity: 1;
+    margin-bottom: 50px;
 }
 
+/* =========================
+    INPUTS (Línea de Firma Minimalista)
+========================= */
 .input-group {
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .input-group label {
     display: block;
-    font-size: 11px;
+    font-family: var(--font-detail);
+    font-size: 9px;
+    color: #000000;
     text-transform: uppercase;
-    font-weight: 700;
-    margin-bottom: 8px;
-    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
 }
 
 .input-group input {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #e0e0e0;
-    border-radius: 0; /* Estilo cuadrado minimalista */
-    font-family: 'Inter', sans-serif;
-    box-sizing: border-box;
+    padding: 12px 0;
+    background: transparent;
+    border: none;
+    /* Línea inferior más fina y limpia */
+    border-bottom: 1px solid #e0e0e0;
+    color: #000000;
+    font-family: var(--font-ui); /* Cambiado a UI para mejor legibilidad al escribir */
+    font-size: 0.9rem;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.input-group input:focus {
+    outline: none;
+    border-bottom: 1px solid #000000; /* Negro puro al enfocar */
+}
+
+.input-group input::placeholder {
+    color: #cccccc;
+    font-weight: 200;
+}
+
+/* =========================
+    BOTÓN Y LINKS (Contraste Total)
+========================= */
 .login-btn {
     width: 100%;
-    padding: 15px;
-    background: #000;
-    color: #fff;
-    border: none;
-    font-weight: 700;
+    padding: 20px;
+    background: #000000; /* Bloque negro sólido */
+    color: #ffffff;
+    border: 1px solid #000000;
+    font-family: var(--font-detail);
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 5px;
     cursor: pointer;
-    transition: opacity 0.3s;
-    margin-top: 10px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-top: 25px;
 }
 
 .login-btn:hover {
-    opacity: 0.8;
+    background: transparent;
+    color: #000000;
 }
 
 .login-footer {
-    margin-top: 25px;
-    font-size: 13px;
+    margin-top: 40px;
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    color: #888888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .login-footer a {
-    color: #000;
+    color: #000000;
     font-weight: 700;
-    text-decoration: underline;
+    text-decoration: none;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 2px;
+    margin-left: 5px;
+    transition: opacity 0.3s ease;
+}
+
+.login-footer a:hover {
+    opacity: 0.5;
+}
+
+/* MENSAJES DE ERROR (Agresivo pero limpio) */
+.error-msg {
+    color: var(--accent-crimson);
+    font-family: var(--font-detail);
+    font-size: 9px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+input.ng-invalid.ng-touched {
+    border-bottom-color: var(--accent-crimson) !important;
 }

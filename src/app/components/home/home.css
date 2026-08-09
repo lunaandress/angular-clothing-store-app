@@ -1,133 +1,185 @@
-/* Arreglo de videos para que no se desmadren */
+/* =========================
+    HERO SECTION (Galería Editorial Blanca)
+========================= */
+.hero-section {
+    height: 90vh; /* Un poco más alto para elegancia */
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bg-deep); /* Blanco */
+}
+
+.hero-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Look Disturbia White: Contraste alto, sin oscurecer tanto */
+    filter: brightness(1) contrast(1.1) grayscale(20%);
+    transition: transform 12s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero-section:hover img {
+    transform: scale(1.05);
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--pearl-white); /* Negro */
+    width: 95%;
+    z-index: 5;
+}
+
+.hero-title {
+    font-family: var(--font-editorial); /* Pirata One */
+    font-size: 12vw;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.02em; /* Letras más juntas para look de revista */
+    line-height: 0.8;
+    margin: 0;
+    color: w;
+    text-shadow: none;
+    pointer-events: none;
+}
+
+.hero-subtitle {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    letter-spacing: 8px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* =========================
+    VIDEO SPLIT (Contraste Máximo)
+========================= */
 .split-video-section {
     display: flex;
     width: 100%;
-    height: 70vh; /* Bajamos un poco la altura para que no sea tan gigante */
+    height: 85vh;
     overflow: hidden;
-    background-color: #000;
+    background-color: var(--bg-deep);
+    gap: 15px; /* Más espacio entre vídeos para que "respiren" sobre el blanco */
+    padding: 15px; /* Marco blanco exterior */
+    box-sizing: border-box;
 }
 
 .video-wrapper {
     position: relative;
     flex: 1;
     height: 100%;
+    background: #f8f8f8; /* Fondo neutro mientras carga */
+    overflow: hidden;
 }
 
 .side-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    opacity: 1; /* En blanco, mejor opacidad total */
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.video-wrapper:hover .side-video {
+    transform: scale(1.03);
 }
 
 .video-overlay-text {
     position: absolute;
-    bottom: 50px;
+    bottom: 40px;
     left: 40px;
-    color: white;
+    color: #fff; /* Dentro del video mantenemos blanco para que se lea */
     z-index: 10;
 }
 
+.video-label {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    font-family: var(--font-ui);
+}
+
 .video-title {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: 2.5vw;
-    margin-bottom: 20px;
+    font-family: var(--font-editorial);
+    font-weight: 400;
+    font-size: 3vw;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1;
 }
 
 .video-btn {
-    padding: 10px 25px;
-    border: 1px solid white;
-    border-radius: 50px;
-    color: white;
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #fff;
+    color: #fff;
     text-decoration: none;
-    font-size: 11px;
+    font-family: var(--font-ui);
+    font-size: 10px;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    margin-right: 10px;
+    background: transparent;
+    transition: var(--luxury-transition);
 }
 
-/* Estilo para el botón de "Ver todos" */
+.video-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* =========================
+    NEW ARRIVALS & SHOP LAYOUT
+========================= */
+.section-header {
+    padding: 100px 0 50px;
+    text-align: center;
+}
+
+.section-header h2 {
+    font-family: var(--font-editorial);
+    font-size: 3rem;
+    letter-spacing: 5px;
+    color: black;
+}
+
+.shop-layout {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* =========================
+    VIEW ALL (Botón de Lujo)
+========================= */
 .view-all-container {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 60px 0;
+    padding: 100px 0;
 }
 
 .view-all-link {
-    font-size: 13px;
+    font-family: var(--font-ui);
+    font-size: 11px;
     font-weight: 600;
-    text-transform: uppercase;
-    color: #000;
+    color: var(--pearl-white);
     text-decoration: none;
-    border-bottom: 2px solid #000;
-    padding-bottom: 4px;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
+    border: 1px solid var(--pearl-white); /* Botón enmarcado en lugar de solo línea */
+    padding: 15px 50px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    transition: var(--luxury-transition);
 }
 
 .view-all-link:hover {
-    letter-spacing: 2px;
-    opacity: 0.7;
-}
-
-/* 1. El contenedor padre debe ser relativo */
-.hero-section {
-    position: relative;
-    width: 100%;
-    height: 70vh; /* O la altura que tengas definida */
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-/* 2. El contenedor del video también debe ser relativo para que el texto flote sobre él */
-.video-placeholder {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-/* =========================
-    HERO SECTION
-========================= */
-
-.hero-section {
-    height: 80vh;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Imagen de fondo */
-.hero-section img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Contenido centrado */
-.hero-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    text-align: center;
-    color: white;
-}
-
-/* Título gigante estilo brand */
-.hero-title {
-    font-family: 'Archivo Black', sans-serif;
-
-    font-size: 10vw;           /* Responsive gigante */
-    font-weight: 400;          /* (10 no es válido → lo ajusto) */
-
-    text-transform: uppercase;
-    letter-spacing: -0.06em;
-    line-height: 0.8;
-
-    margin: 0;
-    color: #fff;
-
-    pointer-events: none; /* No bloquea clicks */
+    background: var(--pearl-white);
+    color: var(--bg-deep); /* Invierte colores */
+    letter-spacing: 6px;
 }

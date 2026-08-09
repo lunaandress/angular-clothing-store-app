@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core'; // 1. Añadimos Output y EventEmitter
 import { CartService } from '../../services/cart.service';
 import { ProductoService } from '../../services/producto.service';
 
@@ -12,41 +12,51 @@ import { ProductoService } from '../../services/producto.service';
 })
 export class CarritoComponent {
 
+  // 2. Definimos la salida para avisar al padre que debe cerrar
+  @Output() closeCart = new EventEmitter<void>();
+
   constructor(
     public cartService: CartService,
     private productoService: ProductoService
   ) {}
 
-  enviarPedidoFinal() {
-    const items = this.cartService.items();
-    
-    if (items.length === 0) return;
+  // 3. Función que dispara el evento de cierre
+  cerrarCarrito() {
+    this.closeCart.emit();
+  }
 
-    // Recorremos los productos del carrito y los enviamos uno a uno a la BD
-    items.forEach(item => {
-      const pedido = {
-        descripcion: `Compra de: ${item.nombre}`,
+  enviarPedidoFinal() {
+    const listaProductos = this.cartService.items();
+    
+    if (listaProductos.length === 0) return;
+
+    const pedidoCompleto = {
+      descripcion: `Compra de ${listaProductos.length} artículos en STYLES®`,
+      items: listaProductos.map(item => ({
         cantidad: item.cantidad,
         producto: { id: item.idProducto }
-      };
+      }))
+    };
 
-      this.productoService.crearPedido(pedido).subscribe({
-        next: (res) => console.log('Guardado en Java:', res),
-        error: (err) => console.error('Error al guardar:', err)
-      });
+    this.productoService.crearPedido(pedidoCompleto).subscribe({
+      next: (res) => {
+        console.log('¡Pedido agrupado guardado con éxito!', res);
+        alert('¡Pedido enviado con éxito!');
+        this.cartService.limpiarCarrito();
+        this.cerrarCarrito(); // Opcional: cerramos el carrito tras la compra
+      },
+      error: (err) => {
+        console.error('Error al guardar el pedido completo:', err);
+        alert('Hubo un error al procesar la compra.');
+      }
     });
-
-    alert('¡Pedido enviado con éxito a la base de datos!');
-    this.cartService.limpiarCarrito();
   }
   
   eliminar(id: number) {
-  this.cartService.eliminarProducto(id);
-}
+    this.cartService.eliminarProducto(id);
+  }
 
-calcularTotal(): number {
-  return this.cartService.items().reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
-}
-
-  
+  calcularTotal(): number {
+    return this.cartService.items().reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+  }
 }

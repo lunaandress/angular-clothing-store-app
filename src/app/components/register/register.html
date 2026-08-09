@@ -1,0 +1,30 @@
+<div class="login-container">
+    <div class="login-box">
+        <h2 class="login-title">JOIN US</h2>
+        <p class="login-subtitle">Crea tu cuenta en STYLES® STUDIO.</p>
+
+        <form (submit)="onRegister($event)">
+            <div class="input-group">
+                <label for="username">Nombre de Usuario</label>
+                <input type="text" name="username" [(ngModel)]="registerData.username" placeholder="Ej: Juan_Andres"
+                    required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" [(ngModel)]="registerData.email" placeholder="tu@email.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" [(ngModel)]="registerData.password"
+                    placeholder="Mínimo 8 caracteres" required>
+            </div>
+
+            <button type="submit" class="login-btn">Crear Cuenta</button>
+        </form>
+        <div class="login-footer">
+            <p>¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a></p>
+        </div>
+    </div>
+</div>
